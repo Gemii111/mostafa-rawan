@@ -5,7 +5,6 @@ import MusicPlayer from './components/MusicPlayer';
 import FloatingNav from './components/FloatingNav';
 import HeroSection from './components/HeroSection';
 import CountdownSection from './components/CountdownSection';
-import CelebrationSection from './components/CelebrationSection';
 import LocationSection from './components/LocationSection';
 import ClosingSection from './components/ClosingSection';
 
@@ -37,14 +36,11 @@ export default function App() {
         {/* 2. Compact Luxury Countdown */}
         <CountdownSection />
 
-        {/* 3. The Celebration */}
-        <CelebrationSection />
-
-        {/* 4. Verified Venue & Google Maps Navigation */}
+        {/* 3. Verified Venue & Google Maps Navigation */}
         <LocationSection />
       </main>
 
-      {/* 5. Minimal Heartfelt Closing */}
+      {/* 4. Minimal Heartfelt Closing */}
       <ClosingSection />
     </div>
   );
