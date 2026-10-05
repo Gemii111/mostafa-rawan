@@ -114,11 +114,10 @@ export default function HeroSection() {
           }}
         >
           <div
-            className="editorial-card"
+            className="editorial-card artwork-glow-card"
             style={{
               padding: '0.65rem',
               backgroundColor: 'rgba(255, 255, 255, 0.95)',
-              boxShadow: '0 20px 50px -10px rgba(41, 35, 28, 0.16), 0 0 0 1px rgba(197, 160, 89, 0.35)',
               borderRadius: '12px',
               overflow: 'hidden',
             }}

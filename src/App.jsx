@@ -8,6 +8,8 @@ import TimelineSection from './components/TimelineSection';
 import LocationSection from './components/LocationSection';
 import ClosingSection from './components/ClosingSection';
 
+import ClickSparkles from './components/ClickSparkles';
+
 /**
  * Mostafa & Rawan — THE WEDDING
  * Clean, non-repetitive luxury digital invitation.
@@ -18,6 +20,9 @@ export default function App() {
     <div className="wedding-app-root">
       {/* Subtle Floating Ambient Particles */}
       <ParticlesCanvas />
+
+      {/* Interactive Celebratory Click/Tap Sparkles */}
+      <ClickSparkles />
 
       {/* Floating Controls */}
       <FloatingNav />
