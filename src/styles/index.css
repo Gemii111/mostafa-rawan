@@ -61,7 +61,7 @@ html {
   scroll-behavior: smooth;
   background-color: var(--color-bg);
   color: var(--color-text-primary);
-  font-family: var(--font-arabic);
+  font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -424,7 +424,7 @@ h1, h2, h3, .heading-serif {
   border-radius: 12px;
   box-shadow: 0 16px 40px -10px rgba(41, 35, 28, 0.08), 0 0 0 1px rgba(197, 160, 89, 0.2);
   margin-bottom: 2rem;
-  direction: rtl;
+  direction: ltr;
 }
 
 @media (min-width: 640px) {

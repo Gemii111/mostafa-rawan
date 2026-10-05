@@ -5,6 +5,7 @@ import { Heart, ChevronUp } from 'lucide-react';
 /**
  * Closing Section:
  * Minimal, heartfelt closing. Zero clutter.
+ * All-English Luxury Haute-Couture Edition.
  */
 export default function ClosingSection() {
   const scrollToTop = () => {
@@ -43,31 +44,18 @@ export default function ClosingSection() {
         </div>
 
         {/* Names */}
-        <div
-          className="font-arabic"
+        <h2
+          className="font-serif"
           style={{
-            fontSize: 'clamp(2rem, 5vw, 3.2rem)',
+            fontSize: 'clamp(2.4rem, 5vw, 3.6rem)',
             color: '#FFFFFF',
-            fontWeight: 800,
-            marginBottom: '0.4rem',
+            fontWeight: 400,
+            letterSpacing: '0.06em',
+            marginBottom: '0.5rem',
           }}
         >
-          {weddingConfig.groomAr} <span style={{ color: 'var(--color-gold)', fontWeight: 300 }}>&amp;</span> {weddingConfig.brideAr}
-        </div>
-
-        <div
-          className="font-sans"
-          style={{
-            fontSize: '0.85rem',
-            letterSpacing: '0.22em',
-            textTransform: 'uppercase',
-            color: 'var(--color-gold-dark)',
-            fontWeight: 600,
-            marginBottom: '1rem',
-          }}
-        >
-          {weddingConfig.groom} &amp; {weddingConfig.bride}
-        </div>
+          {weddingConfig.groom} <span style={{ color: 'var(--color-gold)', fontStyle: 'italic', fontWeight: 300 }}>&amp;</span> {weddingConfig.bride}
+        </h2>
 
         {/* English Event Type */}
         <div
@@ -77,7 +65,7 @@ export default function ClosingSection() {
             color: 'var(--color-champagne)',
             letterSpacing: '0.25em',
             textTransform: 'uppercase',
-            fontWeight: 600,
+            fontWeight: 700,
             marginBottom: '1.5rem',
           }}
         >
@@ -90,16 +78,16 @@ export default function ClosingSection() {
 
         {/* Warm Closing Line */}
         <p
-          className="font-arabic"
+          className="font-sans"
           style={{
-            fontSize: 'clamp(1.15rem, 2.2vw, 1.45rem)',
+            fontSize: 'clamp(1.1rem, 2.2vw, 1.35rem)',
             color: '#FFFFFF',
-            fontWeight: 600,
+            fontWeight: 500,
             marginBottom: '2.5rem',
-            direction: 'rtl',
+            letterSpacing: '0.02em',
           }}
         >
-          مستنيينكم تنورونا وتفرحوا معانا!
+          We cannot wait to celebrate with you!
         </p>
 
         {/* Back To Top Button */}
@@ -153,8 +141,8 @@ export default function ClosingSection() {
           className="font-sans"
         >
           <div>MOSTAFA &amp; RAWAN • THE WEDDING</div>
-          <div className="font-arabic" style={{ color: '#887E75' }}>
-            قاعة التراث • المنصورة
+          <div style={{ color: '#887E75' }}>
+            October 17, 2026 • El Torath Ballroom, Mansoura
           </div>
         </div>
       </div>

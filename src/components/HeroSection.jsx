@@ -5,8 +5,8 @@ import { Calendar, Clock, MapPin, Sparkles, Navigation, CalendarCheck } from 'lu
 /**
  * Hero Section:
  * The couple's authentic artwork is the FIRST centerpiece at the very top.
- * Removed duplicate lyric and names under the image as requested.
- * Ultra-delicate, attractive card for Date, Time, Venue, and Dress Code.
+ * All-English Luxury Haute-Couture Edition.
+ * Clear time: 8:00 PM.
  */
 export default function HeroSection() {
   const scrollToLocation = () => {
@@ -16,10 +16,10 @@ export default function HeroSection() {
 
   const handleAddToCalendar = () => {
     const startDate = new Date(WEDDING_DATE).toISOString().replace(/-|:|\.\d\d\d/g, '');
-    const endDate = new Date(new Date(WEDDING_DATE).getTime() + 6 * 60 * 60 * 1000).toISOString().replace(/-|:|\.\d\d\d/g, '');
-    const title = encodeURIComponent(`فرح مصطفى & روان | Mostafa & Rawan Wedding`);
-    const details = encodeURIComponent(`فرح مصطفى & روان\nالمكان: ${weddingConfig.location.venueNameAr} (${weddingConfig.location.venueName})\nالعنوان: ${weddingConfig.location.addressAr}\nاللوكيشن: ${weddingConfig.location.locationUrl}`);
-    const location = encodeURIComponent(`${weddingConfig.location.venueNameAr}, ${weddingConfig.location.cityAr}`);
+    const endDate = new Date(new Date(WEDDING_DATE).getTime() + 5 * 60 * 60 * 1000).toISOString().replace(/-|:|\.\d\d\d/g, '');
+    const title = encodeURIComponent(`Mostafa & Rawan — The Wedding`);
+    const details = encodeURIComponent(`Mostafa & Rawan Wedding Celebration\nVenue: ${weddingConfig.location.venueName}\nAddress: ${weddingConfig.location.address}, ${weddingConfig.location.city}\nDirections: ${weddingConfig.location.locationUrl}`);
+    const location = encodeURIComponent(`${weddingConfig.location.venueName}, ${weddingConfig.location.city}`);
     const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDate}/${endDate}&details=${details}&location=${location}`;
     window.open(url, '_blank');
   };
@@ -96,12 +96,12 @@ export default function HeroSection() {
             className="font-sans"
             style={{
               fontSize: '0.78rem',
-              letterSpacing: '0.12em',
+              letterSpacing: '0.14em',
               color: 'var(--color-text-secondary)',
               fontWeight: 600,
             }}
           >
-            17.10.2026
+            OCTOBER 17, 2026
           </span>
         </div>
 
@@ -135,24 +135,40 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* 2. Simple & Attractive Invitation Line */}
-        <p
-          className="font-arabic"
+        {/* Couple Names */}
+        <h1
+          className="font-serif"
           style={{
-            fontSize: 'clamp(1.15rem, 2.5vw, 1.45rem)',
+            fontSize: 'clamp(2.5rem, 6vw, 4.2rem)',
+            fontWeight: 400,
+            letterSpacing: '0.06em',
             color: 'var(--color-text-primary)',
-            fontWeight: 700,
-            lineHeight: 1.7,
-            maxWidth: '620px',
-            margin: '0.75rem auto 1.75rem auto',
+            lineHeight: 1.15,
+            marginBottom: '0.75rem',
           }}
         >
-          {weddingConfig.invitationTextAr}
+          {weddingConfig.groom} <span style={{ color: 'var(--color-gold)', fontStyle: 'italic', fontWeight: 300 }}>&amp;</span> {weddingConfig.bride}
+        </h1>
+
+        {/* 2. Simple & Attractive English Invitation Line */}
+        <p
+          className="font-sans"
+          style={{
+            fontSize: 'clamp(1rem, 2.2vw, 1.25rem)',
+            color: 'var(--color-text-secondary)',
+            fontWeight: 500,
+            lineHeight: 1.7,
+            maxWidth: '620px',
+            margin: '0 auto 2rem auto',
+            letterSpacing: '0.01em',
+          }}
+        >
+          {weddingConfig.invitationText}
         </p>
 
         {/* 3. Ultra-Delicate, Chic Details Card (2x2 on mobile, 4x1 on desktop) */}
         <div className="hero-details-grid">
-          {/* التاريخ */}
+          {/* Date */}
           <div
             style={{
               display: 'flex',
@@ -180,30 +196,31 @@ export default function HeroSection() {
               <Calendar size={18} />
             </div>
             <span
-              className="font-arabic"
+              className="font-sans"
               style={{
-                fontSize: '0.82rem',
+                fontSize: '0.75rem',
                 color: 'var(--color-gold-dark)',
                 fontWeight: 700,
-                letterSpacing: '0.05em',
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
                 marginBottom: '0.25rem',
               }}
             >
-              التاريخ
+              Date
             </span>
             <span
-              className="font-arabic"
+              className="font-sans"
               style={{
-                fontSize: '1.05rem',
+                fontSize: '0.98rem',
                 color: 'var(--color-text-primary)',
                 fontWeight: 700,
               }}
             >
-              {weddingConfig.displayDateAr}
+              {weddingConfig.displayDate}
             </span>
           </div>
 
-          {/* الميعاد */}
+          {/* Time: Exactly 8:00 PM */}
           <div
             style={{
               display: 'flex',
@@ -231,30 +248,31 @@ export default function HeroSection() {
               <Clock size={18} />
             </div>
             <span
-              className="font-arabic"
+              className="font-sans"
               style={{
-                fontSize: '0.82rem',
+                fontSize: '0.75rem',
                 color: 'var(--color-gold-dark)',
                 fontWeight: 700,
-                letterSpacing: '0.05em',
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
                 marginBottom: '0.25rem',
               }}
             >
-              الميعاد
+              Time
             </span>
             <span
-              className="font-arabic"
+              className="font-sans"
               style={{
                 fontSize: '1.05rem',
                 color: 'var(--color-text-primary)',
                 fontWeight: 700,
               }}
             >
-              {weddingConfig.displayTimeAr}
+              {weddingConfig.displayTime}
             </span>
           </div>
 
-          {/* المكان */}
+          {/* Venue */}
           <div
             style={{
               display: 'flex',
@@ -282,30 +300,31 @@ export default function HeroSection() {
               <MapPin size={18} />
             </div>
             <span
-              className="font-arabic"
+              className="font-sans"
               style={{
-                fontSize: '0.82rem',
+                fontSize: '0.75rem',
                 color: 'var(--color-gold-dark)',
                 fontWeight: 700,
-                letterSpacing: '0.05em',
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
                 marginBottom: '0.25rem',
               }}
             >
-              المكان
+              Venue
             </span>
             <span
-              className="font-arabic"
+              className="font-sans"
               style={{
-                fontSize: '1.05rem',
+                fontSize: '0.98rem',
                 color: 'var(--color-text-primary)',
                 fontWeight: 700,
               }}
             >
-              {weddingConfig.location.venueNameAr} — {weddingConfig.location.cityAr}
+              {weddingConfig.location.venueName} — Mansoura
             </span>
           </div>
 
-          {/* الدريس كود */}
+          {/* Dress Code */}
           <div
             style={{
               display: 'flex',
@@ -333,26 +352,27 @@ export default function HeroSection() {
               <Sparkles size={18} />
             </div>
             <span
-              className="font-arabic"
+              className="font-sans"
               style={{
-                fontSize: '0.82rem',
+                fontSize: '0.75rem',
                 color: 'var(--color-gold-dark)',
                 fontWeight: 700,
-                letterSpacing: '0.05em',
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
                 marginBottom: '0.25rem',
               }}
             >
-              الدريس كود
+              Dress Code
             </span>
             <span
-              className="font-arabic"
+              className="font-sans"
               style={{
-                fontSize: '1.05rem',
+                fontSize: '0.98rem',
                 color: 'var(--color-text-primary)',
                 fontWeight: 700,
               }}
             >
-              {weddingConfig.dressCode.titleAr}
+              {weddingConfig.dressCode.title}
             </span>
           </div>
         </div>
@@ -364,7 +384,9 @@ export default function HeroSection() {
             className="btn-luxury"
           >
             <Navigation size={16} />
-            <span className="font-arabic" style={{ fontSize: '0.95rem' }}>مكان القاعة على الخريطة</span>
+            <span className="font-sans" style={{ fontSize: '0.85rem', letterSpacing: '0.12em' }}>
+              Venue Location
+            </span>
           </button>
 
           <button
@@ -372,7 +394,9 @@ export default function HeroSection() {
             className="btn-luxury-outline"
           >
             <CalendarCheck size={16} color="var(--color-gold-dark)" />
-            <span className="font-arabic" style={{ fontSize: '0.95rem' }}>سجّل في Google Calendar</span>
+            <span className="font-sans" style={{ fontSize: '0.85rem', letterSpacing: '0.12em' }}>
+              Add to Google Calendar
+            </span>
           </button>
         </div>
       </div>

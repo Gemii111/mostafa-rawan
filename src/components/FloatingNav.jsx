@@ -5,6 +5,7 @@ import { weddingConfig } from '../config/weddingConfig';
 /**
  * Minimal Floating Navigation:
  * Clean, lightweight, un-cluttered navigation.
+ * All-English Luxury Haute-Couture Edition.
  */
 export default function FloatingNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,10 +20,10 @@ export default function FloatingNav() {
   }, []);
 
   const navItems = [
-    { id: 'hero', number: '01', title: 'Home', titleAr: 'البداية' },
-    { id: 'countdown', number: '02', title: 'Countdown', titleAr: 'العد التنازلي' },
-    { id: 'timeline', number: '03', title: 'Timeline', titleAr: 'فقرات السهرة' },
-    { id: 'location', number: '04', title: 'Location', titleAr: 'موقع الحفل' },
+    { id: 'hero', number: '01', title: 'The Invitation' },
+    { id: 'countdown', number: '02', title: 'Countdown Clock' },
+    { id: 'celebration', number: '03', title: 'Celebration & Wishes' },
+    { id: 'location', number: '04', title: 'Venue & Directions' },
   ];
 
   const scrollTo = (id) => {
@@ -35,7 +36,7 @@ export default function FloatingNav() {
 
   return (
     <>
-      {/* Top Header Menu Button */}
+      {/* Top Header Menu Button (Anchored at top - does not scroll down) */}
       <div
         style={{
           position: 'absolute',
@@ -186,7 +187,7 @@ export default function FloatingNav() {
                 style={{
                   cursor: 'pointer',
                   display: 'flex',
-                  alignItems: 'baseline',
+                  alignItems: 'center',
                   justifyContent: 'space-between',
                   borderBottom: '1px solid rgba(61, 55, 48, 0.08)',
                   paddingBottom: '0.85rem',
@@ -225,19 +226,7 @@ export default function FloatingNav() {
                   </span>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                  <span
-                    className="font-arabic"
-                    style={{
-                      fontSize: '1.05rem',
-                      color: 'var(--color-text-secondary)',
-                      fontWeight: 600,
-                    }}
-                  >
-                    {item.titleAr}
-                  </span>
-                  <ArrowUpRight size={15} color="var(--color-gold)" />
-                </div>
+                <ArrowUpRight size={18} color="var(--color-gold)" />
               </div>
             ))}
           </div>
@@ -255,9 +244,9 @@ export default function FloatingNav() {
               fontSize: '0.85rem',
               color: 'var(--color-text-muted)',
             }}
-            className="font-arabic"
+            className="font-sans"
           >
-            <div>{weddingConfig.displayDateAr} • {weddingConfig.location.venueNameAr}</div>
+            <div>{weddingConfig.displayDate} • {weddingConfig.location.venueName}, {weddingConfig.location.city}</div>
           </div>
         </div>
       )}

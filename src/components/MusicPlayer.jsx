@@ -4,7 +4,7 @@ import { weddingConfig } from '../config/weddingConfig';
 
 /**
  * Modern Audio Player:
- * - Plays the actual authentic track: Amr Diab – Yom Ma Etabelna (عمرو دياب – يوم ما تقابلنا)
+ * - Plays the authentic track: Amr Diab – Yom Ma Etabelna
  * - Tries immediate unmuted autoplay on page load.
  * - If blocked by browser autoplay policy (mobile Safari / Chrome), instantly starts
  *   on the very first tap or touch anywhere on the screen.
@@ -150,11 +150,11 @@ export default function MusicPlayer() {
             gap: '0.5rem',
             whiteSpace: 'nowrap',
           }}
-          className="font-arabic"
+          className="font-sans"
         >
           <Music size={12} color="var(--color-gold-dark)" />
           <span style={{ fontWeight: 700, color: 'var(--color-text-primary)' }}>
-            {weddingConfig.music.titleAr}
+            {weddingConfig.music.title}
           </span>
         </div>
 

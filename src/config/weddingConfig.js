@@ -1,35 +1,27 @@
 /**
  * Central Configuration for Mostafa & Rawan's Wedding Invitation
- * Strictly confirmed facts and delicate Egyptian phrasing.
+ * All-English Luxury Haute-Couture Edition.
  */
 
-export const WEDDING_DATE = "2026-10-17T19:00:00+02:00";
+export const WEDDING_DATE = "2026-10-17T20:00:00+02:00";
 
 export const weddingConfig = {
   groom: "MOSTAFA",
-  groomAr: "مصطفى",
   bride: "RAWAN",
-  brideAr: "روان",
 
-  // Strictly English event title as requested
   eventType: "THE WEDDING",
 
-  // Highly delicate, warm and classy invitation line
-  invitationTextAr: "يسعدنا تشاركونا فرحة العمر.. ووجودكم ينوّر ليلتنا ✨",
+  // Warm & elegant English invitation copy
+  invitationText: "Together with their families, Mostafa & Rawan invite you to celebrate their wedding and share in the joy of their new beginning.",
 
   weddingDate: WEDDING_DATE,
   displayDate: "Saturday, October 17, 2026",
-  displayDateAr: "السبت، ١٧ أكتوبر ٢٠٢٦",
-  displayTime: "7:00 PM",
-  displayTimeAr: "الساعة ٧:٠٠ مساءً",
+  displayTime: "8:00 PM",
 
   location: {
     venueName: "El Torath Ballroom",
-    venueNameAr: "قاعة التراث",
     city: "Mansoura, Egypt",
-    cityAr: "المنصورة",
     address: "Talkha - Mansoura Road, Dakahlia",
-    addressAr: "طريق طلخا - المنصورة، محافظة الدقهلية",
     locationUrl: "https://maps.app.goo.gl/GDEuKqZ8shG3MxF69",
     latitude: 31.049811,
     longitude: 31.381761,
@@ -38,7 +30,6 @@ export const weddingConfig = {
   music: {
     src: "/audio/yom-ma-etabelna.mp3",
     title: "Amr Diab – Yom Ma Etabelna",
-    titleAr: "عمرو دياب – يوم ما تقابلنا",
     artist: "Amr Diab",
   },
 
@@ -46,41 +37,18 @@ export const weddingConfig = {
     artPhoto: "/images/mostafa-rawan-art.jpg?v=artwork-v3",
   },
 
-  // 4 confirmed milestones
-  timeline: [
-    {
-      num: "01",
-      time: "7:00 PM",
-      timeAr: "٧:٠٠ م",
-      title: "Guest Reception",
-      titleAr: "استقبال الحضور والضيافة",
-    },
-    {
-      num: "02",
-      time: "8:30 PM",
-      timeAr: "٨:٣٠ م",
-      title: "The Zaffa",
-      titleAr: "الزفة والترحيب بالعروسين",
-    },
-    {
-      num: "03",
-      time: "9:30 PM",
-      timeAr: "٩:٣٠ م",
-      title: "Dinner",
-      titleAr: "العشاء",
-    },
-    {
-      num: "04",
-      time: "10:30 PM",
-      timeAr: "١٠:٣٠ م",
-      title: "First Dance & Cake",
-      titleAr: "الرقصة الأولى وتقطيع التورتة",
-    },
-  ],
-
   dressCode: {
     title: "Formal Elegance",
-    titleAr: "ملابس رسمية",
-    descriptionAr: "بدل كاملة للسادة، وفساتين سواريه راقية للسيدات",
+    subtitle: "Black Tie Optional",
+    description: "Tailored formal suits for gentlemen and elegant evening dresses for ladies.",
+  },
+
+  celebration: {
+    time: "8:00 PM",
+    doorsOpen: "8:00 PM Sharp",
+    venue: "El Torath Ballroom",
+    city: "Mansoura, Egypt",
+    quote: "Two souls, one heart, a lifetime of love to share.",
+    note: "Your presence and blessings are the most precious gift to us as we begin our life together.",
   },
 };

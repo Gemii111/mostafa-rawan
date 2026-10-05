@@ -3,8 +3,8 @@ import { WEDDING_DATE } from '../config/weddingConfig';
 
 /**
  * Countdown Section:
- * Compact, elegant countdown clock.
- * Zero repetitive text.
+ * Compact, luxury English countdown clock.
+ * Fully responsive for mobile and desktop.
  */
 export default function CountdownSection() {
   const [timeLeft, setTimeLeft] = useState({
@@ -38,17 +38,17 @@ export default function CountdownSection() {
   const formatNumber = (num) => String(num).padStart(2, '0');
 
   const units = [
-    { label: 'Days', labelAr: 'أيام', value: formatNumber(timeLeft.days) },
-    { label: 'Hours', labelAr: 'ساعات', value: formatNumber(timeLeft.hours) },
-    { label: 'Minutes', labelAr: 'دقايق', value: formatNumber(timeLeft.minutes) },
-    { label: 'Seconds', labelAr: 'ثواني', value: formatNumber(timeLeft.seconds) },
+    { label: 'Days', value: formatNumber(timeLeft.days) },
+    { label: 'Hours', value: formatNumber(timeLeft.hours) },
+    { label: 'Minutes', value: formatNumber(timeLeft.minutes) },
+    { label: 'Seconds', value: formatNumber(timeLeft.seconds) },
   ];
 
   return (
     <section
       id="countdown"
       style={{
-        padding: '3.5rem 1.25rem',
+        padding: '3.75rem 1.25rem',
         backgroundColor: 'var(--color-bg-alt)',
         borderTop: '1px solid var(--color-border)',
         borderBottom: '1px solid var(--color-border)',
@@ -57,15 +57,16 @@ export default function CountdownSection() {
     >
       <div className="container-narrow" style={{ textAlign: 'center' }}>
         <h2
-          className="font-arabic"
+          className="font-serif"
           style={{
-            fontSize: 'clamp(1.4rem, 3vw, 1.8rem)',
-            fontWeight: 700,
-            color: 'var(--color-gold-dark)',
-            marginBottom: '0.4rem',
+            fontSize: 'clamp(1.75rem, 3.8vw, 2.5rem)',
+            fontWeight: 400,
+            letterSpacing: '0.04em',
+            color: 'var(--color-text-primary)',
+            marginBottom: '0.35rem',
           }}
         >
-          العد التنازلي لليلتنا
+          Counting Down to Forever
         </h2>
 
         <div
@@ -74,12 +75,12 @@ export default function CountdownSection() {
             fontSize: '0.75rem',
             letterSpacing: '0.25em',
             textTransform: 'uppercase',
-            color: 'var(--color-text-muted)',
-            fontWeight: 600,
-            marginBottom: '1.75rem',
+            color: 'var(--color-gold-dark)',
+            fontWeight: 700,
+            marginBottom: '2rem',
           }}
         >
-          Counting Down
+          October 17, 2026 • 8:00 PM
         </div>
 
         {/* Countdown Cards Grid (4 columns responsive for iPhone & Android) */}
@@ -92,37 +93,25 @@ export default function CountdownSection() {
               <div
                 className="font-serif countdown-number"
                 style={{
-                  fontSize: 'clamp(1.75rem, 5.5vw, 3.4rem)',
+                  fontSize: 'clamp(1.85rem, 5.5vw, 3.4rem)',
                   fontWeight: 300,
                   lineHeight: 1,
                   color: 'var(--color-text-primary)',
                   letterSpacing: '0.02em',
-                  marginBottom: '0.4rem',
+                  marginBottom: '0.35rem',
                 }}
               >
                 {unit.value}
               </div>
 
               <div
-                className="font-arabic"
-                style={{
-                  fontSize: '1.05rem',
-                  fontWeight: 700,
-                  color: 'var(--color-gold-dark)',
-                  marginBottom: '0.15rem',
-                }}
-              >
-                {unit.labelAr}
-              </div>
-
-              <div
                 className="font-sans"
                 style={{
-                  fontSize: '0.7rem',
-                  letterSpacing: '0.15em',
+                  fontSize: '0.72rem',
+                  letterSpacing: '0.16em',
                   textTransform: 'uppercase',
-                  color: 'var(--color-text-muted)',
-                  fontWeight: 500,
+                  color: 'var(--color-gold-dark)',
+                  fontWeight: 700,
                 }}
               >
                 {unit.label}
