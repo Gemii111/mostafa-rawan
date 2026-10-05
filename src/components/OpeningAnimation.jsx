@@ -1,26 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { weddingConfig } from '../config/weddingConfig';
+import { Music } from 'lucide-react';
 
 /**
  * Opening Animation:
- * Minimal elegant loading and reveal screen.
- * Displays "MOSTAFA & RAWAN" with smooth typography reveal,
- * then gracefully dissolves into the cinematic hero section.
+ * Minimal elegant reveal screen.
+ * Triggers audio playback on click or transition automatically.
  */
 export default function OpeningAnimation({ onComplete }) {
   const [stage, setStage] = useState('reveal'); // 'reveal', 'fadeout', 'done'
 
-  useEffect(() => {
-    // Stage 1: Reveal typography & gold divider (0 - 1.8s)
-    const fadeTimer = setTimeout(() => {
-      setStage('fadeout');
-    }, 2000);
+  const handleEnter = () => {
+    // Dispatch event to start music with user gesture authorization
+    window.dispatchEvent(new Event('start-wedding-audio'));
+    setStage('fadeout');
+    setTimeout(() => {
+      setStage('done');
+      if (onComplete) onComplete();
+    }, 600);
+  };
 
-    // Stage 2: Fade out overlay completely into hero (2.0s - 2.6s)
+  useEffect(() => {
+    // Stage 1: Reveal typography & gold divider (0 - 2.5s)
+    const fadeTimer = setTimeout(() => {
+      window.dispatchEvent(new Event('start-wedding-audio'));
+      setStage('fadeout');
+    }, 2800);
+
+    // Stage 2: Fade out overlay completely into hero
     const completeTimer = setTimeout(() => {
       setStage('done');
       if (onComplete) onComplete();
-    }, 2600);
+    }, 3400);
 
     return () => {
       clearTimeout(fadeTimer);
@@ -32,13 +43,7 @@ export default function OpeningAnimation({ onComplete }) {
 
   return (
     <div
-      onClick={() => {
-        setStage('fadeout');
-        setTimeout(() => {
-          setStage('done');
-          if (onComplete) onComplete();
-        }, 500);
-      }}
+      onClick={handleEnter}
       style={{
         position: 'fixed',
         inset: 0,
@@ -74,17 +79,16 @@ export default function OpeningAnimation({ onComplete }) {
         }}
       >
         <span
-          className="font-sans"
+          className="font-arabic"
           style={{
             display: 'block',
-            fontSize: 'clamp(0.7rem, 1.5vw, 0.85rem)',
-            letterSpacing: '0.35em',
-            textTransform: 'uppercase',
+            fontSize: 'clamp(0.85rem, 1.8vw, 1.05rem)',
             color: '#82786F',
-            marginBottom: '1.25rem',
+            marginBottom: '1rem',
+            fontWeight: 500,
           }}
         >
-          An Invitation To Celebrate
+          دعوة لحضور فرحنا • An Invitation To Celebrate
         </span>
 
         <h1
@@ -131,24 +135,45 @@ export default function OpeningAnimation({ onComplete }) {
             letterSpacing: '0.25em',
             color: '#9F7E3B',
             textTransform: 'uppercase',
+            marginBottom: '0.5rem',
           }}
         >
           {weddingConfig.eventType}
         </div>
+
+        <div
+          className="font-arabic"
+          style={{
+            fontSize: '1.15rem',
+            color: 'var(--color-gold-dark)',
+            fontWeight: 600,
+          }}
+        >
+          "{weddingConfig.romanticQuoteAr}"
+        </div>
       </div>
 
+      {/* Enter button with music icon */}
       <div
         style={{
           position: 'absolute',
           bottom: '2.5rem',
-          fontSize: '0.75rem',
-          letterSpacing: '0.25em',
-          textTransform: 'uppercase',
-          color: '#A89F95',
-          fontFamily: 'var(--font-sans)',
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '0.5rem',
+          padding: '0.5rem 1.25rem',
+          borderRadius: '999px',
+          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          border: '1px solid var(--color-border)',
+          fontSize: '0.8rem',
+          color: 'var(--color-gold-dark)',
+          fontFamily: 'var(--font-arabic)',
+          fontWeight: 600,
+          boxShadow: 'var(--shadow-subtle)',
         }}
       >
-        Click to enter
+        <Music size={14} color="var(--color-gold)" />
+        <span>اضغط هنا للدخول وتشغيل الأغنية</span>
       </div>
     </div>
   );

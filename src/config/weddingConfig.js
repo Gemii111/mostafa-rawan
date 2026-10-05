@@ -3,7 +3,7 @@
  * Everyday friendly Egyptian tone & authentic couple artwork.
  */
 
-export const WEDDING_DATE = "2026-11-20T19:00:00+02:00";
+export const WEDDING_DATE = "2026-10-17T19:00:00+02:00";
 
 export const weddingConfig = {
   groom: "MOSTAFA",
@@ -21,8 +21,8 @@ export const weddingConfig = {
   romanticQuote: "With you, I made peace with my days, and forgave time itself.",
 
   weddingDate: WEDDING_DATE,
-  displayDate: "Friday, November 20, 2026",
-  displayDateAr: "الجمعة، ٢٠ نوفمبر ٢٠٢٦",
+  displayDate: "Saturday, October 17, 2026",
+  displayDateAr: "السبت، ١٧ أكتوبر ٢٠٢٦",
   displayTime: "7:00 PM — Till Late",
   displayTimeAr: "من ٧:٠٠ مساءً لحد ما نخلص فرحة",
 

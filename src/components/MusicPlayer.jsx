@@ -5,6 +5,7 @@ import { weddingConfig } from '../config/weddingConfig';
 /**
  * Floating Music Player:
  * - Plays the actual authentic song: Amr Diab – Yom Ma Etabelna (عمرو دياب – يوم ما تقابلنا)
+ * - Autoplays immediately or seamlessly on any user touch, scroll, or opening screen tap.
  * - Animated equalizer bars
  * - Toast with song title
  */
@@ -17,28 +18,53 @@ export default function MusicPlayer() {
     const audio = audioRef.current;
     if (!audio) return;
 
-    audio.volume = 0.7;
+    audio.volume = 0.95;
     audio.loop = true;
 
-    // Try starting on first user interaction anywhere on the page
-    const handleFirstClick = () => {
+    const playAudioSafely = () => {
       if (audio.paused) {
         audio
           .play()
           .then(() => {
             setIsPlaying(true);
             setShowTooltip(true);
-            setTimeout(() => setShowTooltip(false), 4000);
+            setTimeout(() => setShowTooltip(false), 4500);
+            cleanupListeners();
           })
           .catch((err) => {
-            console.log('Autoplay deferred:', err);
+            // Browser waiting for user gesture
+            console.log('Autoplay waiting for gesture:', err);
           });
       }
-      window.removeEventListener('click', handleFirstClick);
     };
 
-    window.addEventListener('click', handleFirstClick, { once: true });
-    return () => window.removeEventListener('click', handleFirstClick);
+    // 1. Attempt immediate autoplay
+    playAudioSafely();
+
+    // 2. Attach listeners for ANY user gesture (touch, click, scroll, key)
+    const interactionEvents = ['click', 'touchstart', 'touchend', 'pointerdown', 'scroll', 'keydown'];
+
+    const handleUserGesture = () => {
+      playAudioSafely();
+    };
+
+    const cleanupListeners = () => {
+      interactionEvents.forEach((event) => {
+        window.removeEventListener(event, handleUserGesture);
+      });
+      window.removeEventListener('start-wedding-audio', playAudioSafely);
+    };
+
+    interactionEvents.forEach((event) => {
+      window.addEventListener(event, handleUserGesture, { once: false, passive: true });
+    });
+
+    // 3. Listen to custom trigger from OpeningAnimation
+    window.addEventListener('start-wedding-audio', playAudioSafely);
+
+    return () => {
+      cleanupListeners();
+    };
   }, []);
 
   const togglePlay = (e) => {
@@ -65,7 +91,7 @@ export default function MusicPlayer() {
 
   return (
     <>
-      {/* Real original Amr Diab audio track */}
+      {/* Real original Amr Diab 320kbps CD Master audio track */}
       <audio ref={audioRef} preload="auto" loop src={weddingConfig.music.src} />
 
       <div
@@ -100,7 +126,7 @@ export default function MusicPlayer() {
           className="font-sans"
         >
           <Music size={12} color="var(--color-gold)" />
-          <span style={{ fontWeight: 500 }}>{weddingConfig.music.title}</span>
+          <span style={{ fontWeight: 600 }}>{weddingConfig.music.title}</span>
           <span className="font-arabic" style={{ color: 'var(--color-gold-dark)', fontSize: '0.75rem' }}>
             ({weddingConfig.music.titleAr})
           </span>
