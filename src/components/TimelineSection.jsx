@@ -78,12 +78,16 @@ export default function TimelineSection() {
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                 <span
+                  className="timeline-badge-pulse"
                   style={{
                     fontFamily: 'var(--font-serif)',
                     fontSize: '1.25rem',
                     color: 'var(--color-gold-dark)',
-                    fontWeight: 500,
-                    minWidth: '28px',
+                    fontWeight: 700,
+                    minWidth: '34px',
+                    height: '34px',
+                    borderRadius: '50%',
+                    backgroundColor: 'rgba(197, 160, 89, 0.12)',
                   }}
                 >
                   {item.num}

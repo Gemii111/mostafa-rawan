@@ -178,6 +178,7 @@ export default function HeroSection() {
             }}
           >
             <div
+              className="floating-icon-1"
               style={{
                 width: '38px',
                 height: '38px',
@@ -228,6 +229,7 @@ export default function HeroSection() {
             }}
           >
             <div
+              className="floating-icon-2"
               style={{
                 width: '38px',
                 height: '38px',
@@ -278,6 +280,7 @@ export default function HeroSection() {
             }}
           >
             <div
+              className="floating-icon-3"
               style={{
                 width: '38px',
                 height: '38px',
@@ -328,6 +331,7 @@ export default function HeroSection() {
             }}
           >
             <div
+              className="floating-icon-4"
               style={{
                 width: '38px',
                 height: '38px',

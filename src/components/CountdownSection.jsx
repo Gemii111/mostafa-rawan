@@ -107,7 +107,7 @@ export default function CountdownSection() {
               }}
             >
               <div
-                className="font-serif"
+                className="font-serif countdown-number"
                 style={{
                   fontSize: 'clamp(2.4rem, 5vw, 3.6rem)',
                   fontWeight: 300,
