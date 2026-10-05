@@ -1,7 +1,6 @@
 /**
  * Central Configuration for Mostafa & Rawan's Wedding Invitation
  * Strictly confirmed facts, authentic artwork, and natural Egyptian phrasing.
- * NO fake filler, NO unconfirmed details.
  */
 
 export const WEDDING_DATE = "2026-10-17T19:00:00+02:00";
@@ -19,9 +18,8 @@ export const weddingConfig = {
   romanticQuoteAr: "صالحت بيك أيامي.. سامحت بيك الزمن",
   romanticQuote: "With you, I made peace with my days, and forgave time itself.",
 
-  // Authentic, natural Egyptian invitation copy
-  invitationHeadlineAr: "فرحتنا متكملش إلا بوجودكم وسطينا",
-  invitationSubtextAr: "مستنيين كل حبايبنا يشاركونا أحلى ليلة!",
+  // Simple, chic & attractive Egyptian invitation line
+  invitationTextAr: "فرحتنا تكمل بوجودكم وسطينا.. مستنيينكم تنورونا في أحلى ليلة! ✨",
 
   weddingDate: WEDDING_DATE,
   displayDate: "Saturday, October 17, 2026",
@@ -52,7 +50,7 @@ export const weddingConfig = {
     artPhoto: "/images/mostafa-rawan-art.jpg",
   },
 
-  // Strictly confirmed schedule
+  // Timeline without katb ketab as requested
   timeline: [
     {
       num: "01",
@@ -63,27 +61,20 @@ export const weddingConfig = {
     },
     {
       num: "02",
-      time: "8:00 PM",
-      timeAr: "٨:٠٠ م",
-      title: "Katb Ketab",
-      titleAr: "مراسم كتب الكتاب",
-    },
-    {
-      num: "03",
       time: "8:30 PM",
       timeAr: "٨:٣٠ م",
       title: "The Zaffa",
       titleAr: "الزفة والترحيب بالعروسين",
     },
     {
-      num: "04",
+      num: "03",
       time: "9:30 PM",
       timeAr: "٩:٣٠ م",
       title: "Dinner",
       titleAr: "العشاء",
     },
     {
-      num: "05",
+      num: "04",
       time: "10:30 PM",
       timeAr: "١٠:٣٠ م",
       title: "First Dance & Cake",

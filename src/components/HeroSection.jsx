@@ -5,8 +5,8 @@ import { Calendar, Clock, MapPin, Sparkles, Navigation, CalendarCheck } from 'lu
 /**
  * Hero Section:
  * The couple's authentic artwork is the FIRST centerpiece at the very top.
- * Followed by their names, the calligraphy lyric, warm Egyptian invitation,
- * and essential event details. Zero clutter, zero repetition.
+ * Removed duplicate lyric and names under the image as requested.
+ * Ultra-delicate, attractive card for Date, Time, Venue, and Dress Code.
  */
 export default function HeroSection() {
   const scrollToLocation = () => {
@@ -34,7 +34,7 @@ export default function HeroSection() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '5rem 1.25rem 4rem 1.25rem',
+        padding: '4.5rem 1.25rem 3.5rem 1.25rem',
         overflow: 'hidden',
       }}
     >
@@ -42,12 +42,12 @@ export default function HeroSection() {
       <div
         style={{
           position: 'absolute',
-          top: '25%',
+          top: '22%',
           left: '50%',
-          width: 'clamp(320px, 70vw, 750px)',
-          height: 'clamp(320px, 70vw, 750px)',
+          width: 'clamp(320px, 70vw, 720px)',
+          height: 'clamp(320px, 70vw, 720px)',
           transform: 'translate(-50%, -50%)',
-          background: 'radial-gradient(circle, rgba(197, 160, 89, 0.22) 0%, rgba(223, 207, 190, 0.1) 50%, transparent 75%)',
+          background: 'radial-gradient(circle, rgba(197, 160, 89, 0.22) 0%, rgba(223, 207, 190, 0.08) 55%, transparent 75%)',
           borderRadius: '50%',
           pointerEvents: 'none',
           zIndex: 0,
@@ -60,7 +60,7 @@ export default function HeroSection() {
           position: 'relative',
           zIndex: 3,
           textAlign: 'center',
-          maxWidth: '820px',
+          maxWidth: '860px',
           width: '100%',
         }}
       >
@@ -70,7 +70,7 @@ export default function HeroSection() {
             display: 'inline-flex',
             alignItems: 'center',
             gap: '0.65rem',
-            marginBottom: '1.75rem',
+            marginBottom: '1.5rem',
             padding: '0.4rem 1.25rem',
             border: '1px solid rgba(197, 160, 89, 0.4)',
             borderRadius: '999px',
@@ -105,21 +105,21 @@ export default function HeroSection() {
           </span>
         </div>
 
-        {/* 1. THE ARTWORK IS THE FIRST THING RIGHT AT THE TOP */}
+        {/* 1. THE ARTWORK AS THE VERY FIRST CENTERPIECE AT THE TOP */}
         <div
           style={{
-            maxWidth: '420px',
-            margin: '0 auto 1.75rem auto',
+            maxWidth: '430px',
+            margin: '0 auto 1.5rem auto',
             position: 'relative',
           }}
         >
           <div
             className="editorial-card"
             style={{
-              padding: '0.85rem',
+              padding: '0.75rem',
               backgroundColor: 'rgba(255, 255, 255, 0.95)',
               boxShadow: '0 20px 50px -10px rgba(41, 35, 28, 0.16), 0 0 0 1px rgba(197, 160, 89, 0.35)',
-              borderRadius: '10px',
+              borderRadius: '12px',
             }}
           >
             <div
@@ -146,143 +146,240 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* 2. Calligraphic Lyric from Artwork */}
-        <div
-          className="font-arabic"
-          style={{
-            fontSize: 'clamp(1.4rem, 3.4vw, 2.2rem)',
-            color: 'var(--color-crimson-lyric)',
-            fontWeight: 700,
-            lineHeight: 1.45,
-            marginBottom: '0.85rem',
-          }}
-        >
-          "{weddingConfig.romanticQuoteAr}"
-        </div>
-
-        {/* 3. Couple Names (Arabic Primary + English Accent) */}
-        <h1
-          className="font-arabic"
-          style={{
-            fontSize: 'clamp(2.4rem, 6.5vw, 4rem)',
-            fontWeight: 800,
-            color: 'var(--color-text-primary)',
-            margin: '0.2rem 0',
-            lineHeight: 1.2,
-          }}
-        >
-          {weddingConfig.groomAr}{' '}
-          <span
-            style={{
-              fontFamily: 'var(--font-serif)',
-              fontStyle: 'italic',
-              color: 'var(--color-gold)',
-              fontWeight: 300,
-              fontSize: 'clamp(1.8rem, 4.5vw, 3rem)',
-            }}
-          >
-            &amp;
-          </span>{' '}
-          {weddingConfig.brideAr}
-        </h1>
-
-        <div
-          className="font-sans"
-          style={{
-            fontSize: 'clamp(0.85rem, 1.8vw, 1.05rem)',
-            letterSpacing: '0.24em',
-            textTransform: 'uppercase',
-            color: 'var(--color-gold-dark)',
-            fontWeight: 600,
-            marginBottom: '1.25rem',
-          }}
-        >
-          {weddingConfig.groom} &amp; {weddingConfig.bride}
-        </div>
-
-        <div className="gold-divider" style={{ margin: '0.75rem auto 1.5rem auto' }}>
-          <div className="gold-divider-diamond" />
-        </div>
-
-        {/* 4. Warm Egyptian Invitation Phrasing */}
+        {/* 2. Simple & Attractive Invitation Line */}
         <p
           className="font-arabic"
           style={{
-            fontSize: 'clamp(1.15rem, 2.4vw, 1.4rem)',
+            fontSize: 'clamp(1.15rem, 2.5vw, 1.45rem)',
             color: 'var(--color-text-primary)',
-            fontWeight: 600,
+            fontWeight: 700,
             lineHeight: 1.7,
-            maxWidth: '640px',
-            margin: '0 auto 2rem auto',
+            maxWidth: '620px',
+            margin: '0.75rem auto 1.75rem auto',
           }}
         >
-          {weddingConfig.invitationHeadlineAr}،<br />
-          {weddingConfig.invitationSubtextAr}
+          {weddingConfig.invitationTextAr}
         </p>
 
-        {/* 5. Essential Event Info Strip (Stated clearly ONCE) */}
+        {/* 3. Ultra-Delicate, Chic Details Card */}
         <div
+          className="editorial-card"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '1rem',
-            padding: '1.25rem 1.5rem',
-            backgroundColor: 'rgba(255, 255, 255, 0.9)',
-            backdropFilter: 'blur(14px)',
-            border: '1px solid var(--color-border)',
-            borderRadius: '10px',
-            boxShadow: 'var(--shadow-card)',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+            gap: '1.25rem',
+            padding: '1.5rem 1.25rem',
+            backgroundColor: 'rgba(255, 255, 255, 0.92)',
+            backdropFilter: 'blur(16px)',
+            border: '1px solid rgba(197, 160, 89, 0.35)',
+            borderRadius: '12px',
+            boxShadow: '0 16px 40px -10px rgba(41, 35, 28, 0.08), 0 0 0 1px rgba(197, 160, 89, 0.2)',
             marginBottom: '2rem',
-            textAlign: 'center',
+            direction: 'rtl',
           }}
-          className="font-arabic"
         >
-          {/* Date */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.3rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--color-gold-dark)', fontWeight: 700, fontSize: '0.85rem' }}>
-              <Calendar size={15} />
-              <span>التاريخ</span>
+          {/* التاريخ */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '0.5rem',
+            }}
+          >
+            <div
+              style={{
+                width: '38px',
+                height: '38px',
+                borderRadius: '50%',
+                backgroundColor: 'rgba(197, 160, 89, 0.12)',
+                border: '1px solid rgba(197, 160, 89, 0.3)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '0.6rem',
+                color: 'var(--color-gold-dark)',
+              }}
+            >
+              <Calendar size={18} />
             </div>
-            <div style={{ fontWeight: 700, color: 'var(--color-text-primary)', fontSize: '1.05rem' }}>
+            <span
+              className="font-arabic"
+              style={{
+                fontSize: '0.82rem',
+                color: 'var(--color-gold-dark)',
+                fontWeight: 700,
+                letterSpacing: '0.05em',
+                marginBottom: '0.25rem',
+              }}
+            >
+              التاريخ
+            </span>
+            <span
+              className="font-arabic"
+              style={{
+                fontSize: '1.05rem',
+                color: 'var(--color-text-primary)',
+                fontWeight: 700,
+              }}
+            >
               {weddingConfig.displayDateAr}
-            </div>
+            </span>
           </div>
 
-          {/* Time */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.3rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--color-gold-dark)', fontWeight: 700, fontSize: '0.85rem' }}>
-              <Clock size={15} />
-              <span>الميعاد</span>
+          {/* الميعاد */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '0.5rem',
+            }}
+          >
+            <div
+              style={{
+                width: '38px',
+                height: '38px',
+                borderRadius: '50%',
+                backgroundColor: 'rgba(197, 160, 89, 0.12)',
+                border: '1px solid rgba(197, 160, 89, 0.3)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '0.6rem',
+                color: 'var(--color-gold-dark)',
+              }}
+            >
+              <Clock size={18} />
             </div>
-            <div style={{ fontWeight: 700, color: 'var(--color-text-primary)', fontSize: '1.05rem' }}>
+            <span
+              className="font-arabic"
+              style={{
+                fontSize: '0.82rem',
+                color: 'var(--color-gold-dark)',
+                fontWeight: 700,
+                letterSpacing: '0.05em',
+                marginBottom: '0.25rem',
+              }}
+            >
+              الميعاد
+            </span>
+            <span
+              className="font-arabic"
+              style={{
+                fontSize: '1.05rem',
+                color: 'var(--color-text-primary)',
+                fontWeight: 700,
+              }}
+            >
               {weddingConfig.displayTimeAr}
-            </div>
+            </span>
           </div>
 
-          {/* Venue */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.3rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--color-gold-dark)', fontWeight: 700, fontSize: '0.85rem' }}>
-              <MapPin size={15} />
-              <span>المكان</span>
+          {/* المكان */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '0.5rem',
+            }}
+          >
+            <div
+              style={{
+                width: '38px',
+                height: '38px',
+                borderRadius: '50%',
+                backgroundColor: 'rgba(197, 160, 89, 0.12)',
+                border: '1px solid rgba(197, 160, 89, 0.3)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '0.6rem',
+                color: 'var(--color-gold-dark)',
+              }}
+            >
+              <MapPin size={18} />
             </div>
-            <div style={{ fontWeight: 700, color: 'var(--color-text-primary)', fontSize: '1.05rem' }}>
+            <span
+              className="font-arabic"
+              style={{
+                fontSize: '0.82rem',
+                color: 'var(--color-gold-dark)',
+                fontWeight: 700,
+                letterSpacing: '0.05em',
+                marginBottom: '0.25rem',
+              }}
+            >
+              المكان
+            </span>
+            <span
+              className="font-arabic"
+              style={{
+                fontSize: '1.05rem',
+                color: 'var(--color-text-primary)',
+                fontWeight: 700,
+              }}
+            >
               {weddingConfig.location.venueNameAr} — {weddingConfig.location.cityAr}
-            </div>
+            </span>
           </div>
 
-          {/* Dress Code */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.3rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--color-gold-dark)', fontWeight: 700, fontSize: '0.85rem' }}>
-              <Sparkles size={15} />
-              <span>الدريس كود</span>
+          {/* الدريس كود */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '0.5rem',
+            }}
+          >
+            <div
+              style={{
+                width: '38px',
+                height: '38px',
+                borderRadius: '50%',
+                backgroundColor: 'rgba(197, 160, 89, 0.12)',
+                border: '1px solid rgba(197, 160, 89, 0.3)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '0.6rem',
+                color: 'var(--color-gold-dark)',
+              }}
+            >
+              <Sparkles size={18} />
             </div>
-            <div style={{ fontWeight: 700, color: 'var(--color-text-primary)', fontSize: '1.05rem' }}>
+            <span
+              className="font-arabic"
+              style={{
+                fontSize: '0.82rem',
+                color: 'var(--color-gold-dark)',
+                fontWeight: 700,
+                letterSpacing: '0.05em',
+                marginBottom: '0.25rem',
+              }}
+            >
+              الدريس كود
+            </span>
+            <span
+              className="font-arabic"
+              style={{
+                fontSize: '1.05rem',
+                color: 'var(--color-text-primary)',
+                fontWeight: 700,
+              }}
+            >
               {weddingConfig.dressCode.titleAr}
-            </div>
+            </span>
           </div>
         </div>
 
-        {/* 6. Quick Action Buttons */}
+        {/* 4. Action Buttons */}
         <div
           style={{
             display: 'flex',
