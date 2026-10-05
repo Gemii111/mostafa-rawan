@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import EnvelopeIntro from './components/EnvelopeIntro';
 import ParticlesCanvas from './components/ParticlesCanvas';
 import MusicPlayer from './components/MusicPlayer';
 import FloatingNav from './components/FloatingNav';
@@ -14,8 +15,13 @@ import ClosingSection from './components/ClosingSection';
  * The authentic couple artwork is the very first centerpiece at the top.
  */
 export default function App() {
+  const [isInvitationOpened, setIsInvitationOpened] = useState(false);
+
   return (
     <div className="wedding-app-root">
+      {/* 3D Wax Seal Envelope Intro Screen */}
+      <EnvelopeIntro onOpen={() => setIsInvitationOpened(true)} />
+
       {/* Subtle Floating Ambient Particles (60 FPS zero-lag) */}
       <ParticlesCanvas />
 
@@ -31,7 +37,7 @@ export default function App() {
         {/* 2. Compact Luxury Countdown */}
         <CountdownSection />
 
-        {/* 3. The Celebration & Guest Love Notes */}
+        {/* 3. The Celebration */}
         <CelebrationSection />
 
         {/* 4. Verified Venue & Google Maps Navigation */}
