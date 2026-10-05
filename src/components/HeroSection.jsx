@@ -116,33 +116,23 @@ export default function HeroSection() {
           <div
             className="editorial-card"
             style={{
-              padding: '0.75rem',
+              padding: '0.65rem',
               backgroundColor: 'rgba(255, 255, 255, 0.95)',
               boxShadow: '0 20px 50px -10px rgba(41, 35, 28, 0.16), 0 0 0 1px rgba(197, 160, 89, 0.35)',
               borderRadius: '12px',
+              overflow: 'hidden',
             }}
           >
-            <div
+            <img
+              src={weddingConfig.coupleDetails.artPhoto}
+              alt="Mostafa & Rawan"
               style={{
-                position: 'relative',
-                overflow: 'hidden',
+                width: '100%',
+                height: 'auto',
+                display: 'block',
                 borderRadius: '8px',
-                aspectRatio: '2 / 3',
-                backgroundColor: '#FAF5ED',
-                border: '1px solid rgba(197, 160, 89, 0.25)',
               }}
-            >
-              <img
-                src={weddingConfig.coupleDetails.artPhoto}
-                alt="Mostafa & Rawan"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  display: 'block',
-                }}
-              />
-            </div>
+            />
           </div>
         </div>
 

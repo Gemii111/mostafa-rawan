@@ -47,7 +47,7 @@ export const weddingConfig = {
   },
 
   coupleDetails: {
-    artPhoto: "/images/mostafa-rawan-art.jpg",
+    artPhoto: "/images/mostafa-rawan-art.jpg?v=artwork-v3",
   },
 
   // Timeline without katb ketab as requested
