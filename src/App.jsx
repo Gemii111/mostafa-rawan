@@ -9,9 +9,7 @@ import CountdownSection from './components/CountdownSection';
 import CelebrationDetails from './components/CelebrationDetails';
 import TimelineSection from './components/TimelineSection';
 import LocationSection from './components/LocationSection';
-import GallerySection from './components/GallerySection';
 import StorySection from './components/StorySection';
-import RsvpSection from './components/RsvpSection';
 import ClosingSection from './components/ClosingSection';
 
 export default function App() {
@@ -25,11 +23,11 @@ export default function App() {
       {/* Ambient Floating Particles */}
       <ParticlesCanvas />
 
-      {/* Floating Elements */}
+      {/* Floating Controls */}
       <FloatingNav />
       <MusicPlayer />
 
-      {/* Main Page Content Flow */}
+      {/* Main Invitation Content Flow */}
       <main>
         <HeroSection />
         <CoupleSection />
@@ -37,9 +35,7 @@ export default function App() {
         <CelebrationDetails />
         <TimelineSection />
         <LocationSection />
-        <GallerySection />
         <StorySection />
-        <RsvpSection />
       </main>
 
       {/* Cinematic Finale */}

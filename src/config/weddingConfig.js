@@ -1,34 +1,30 @@
 /**
  * Central Configuration for Mostafa & Rawan's Wedding Invitation
- * Written with warm, stylish Egyptian tone & high-end editorial aesthetics.
+ * Everyday friendly Egyptian tone & authentic couple artwork.
  */
 
-// Global Wedding Date variable (ISO 8601 string)
 export const WEDDING_DATE = "2026-11-20T19:00:00+02:00";
 
 export const weddingConfig = {
   groom: "MOSTAFA",
   groomAr: "مصطفى",
-  groomTitle: "العريس",
-  groomBio: "مصطفى.. صاحب الضحكة الحلوة والقلب الطيب، والسند اللي بيه كل حاجة بتهون وبتحلى.",
-
   bride: "RAWAN",
   brideAr: "روان",
-  brideTitle: "العروسة",
-  brideBio: "روان.. أميرة الليلة ونور كل مكان بتدخله، اللي خلت لحياتنا طعم تاني كله بهجة وأمان.",
 
   eventType: "THE WEDDING",
   eventTypeAr: "فرحنا",
   eventSubtitle: "Our Story Begins Here",
-  subtitleAr: "حكايتنا بتبدأ هنا.. وفرحتنا مش هتكمل غير بيكم",
-  romanticQuote: "Two souls, one story. Two lives, two journeys, one beautiful beginning.",
-  romanticQuoteAr: "أجمل صدفة في العمر جمعتنا.. والنهاردة بنبدأ سوا أحلى وأجمل حكاية.",
+  subtitleAr: "فرحتنا مش هتكمل غير بوجودكم معانا",
+
+  // Iconic lyric from their artwork & Amr Diab song
+  romanticQuoteAr: "صالحت بيك أيامي.. سامحت بيك الزمن",
+  romanticQuote: "With you, I made peace with my days, and forgave time itself.",
 
   weddingDate: WEDDING_DATE,
   displayDate: "Friday, November 20, 2026",
   displayDateAr: "الجمعة، ٢٠ نوفمبر ٢٠٢٦",
   displayTime: "7:00 PM — Till Late",
-  displayTimeAr: "من ٧:٠٠ مساءً لحد ما نخلص رقص وفرحة",
+  displayTimeAr: "من ٧:٠٠ مساءً لحد ما نخلص فرحة",
 
   location: {
     venueName: "El Torath Ballroom",
@@ -42,10 +38,6 @@ export const weddingConfig = {
     longitude: 31.381761,
   },
 
-  contact: {
-    whatsappNumber: "201000000000",
-  },
-
   music: {
     src: "/audio/yom-ma-etabelna.mp3?v=master-cd-320k",
     title: "Amr Diab – Yom Ma Etabelna",
@@ -54,153 +46,86 @@ export const weddingConfig = {
   },
 
   coupleDetails: {
-    groomPhoto: "/images/groom-mostafa.jpg",
-    bridePhoto: "/images/bride-rawan.jpg",
-    heroPhoto: "/images/couple-hero.jpg",
+    artPhoto: "/images/mostafa-rawan-art.jpg",
   },
 
   timeline: [
     {
       num: "01",
-      time: "6:30 PM",
-      timeAr: "٦:٣٠ م",
-      title: "Arrival & Welcome Drinks",
-      titleAr: "وصول الحبايب وبداية الليلة",
-      desc: "Warm welcome, fresh welcome drinks, and soft acoustic melodies.",
+      time: "7:00 PM",
+      timeAr: "٧:٠٠ م",
+      title: "Welcome & Gathering",
+      titleAr: "وصول الحبايب ونبدأ السهرة",
       descAr: "عصائر ترحيبية وموسيقى رايقة مع وصول كل اللي بنحبهم وبنستناهم.",
     },
     {
       num: "02",
-      time: "7:30 PM",
-      timeAr: "٧:٣٠ م",
-      title: "Katb El Ketab & Ceremony",
-      titleAr: "كتب الكتاب ومراسم الفرح",
-      desc: "The sacred vows, blessing of the rings, and heartfelt congratulations.",
-      descAr: "كتب الكتاب ومحابس العمر وأحلى دعوات من القلب لبعض ولحياتنا الجديدة.",
+      time: "8:00 PM",
+      timeAr: "٨:٠٠ م",
+      title: "Katb El Ketab",
+      titleAr: "كتب الكتاب ومحابس العمر",
+      descAr: "لحظة كتب الكتاب وأحلى دعوات من القلب لبداية حياتنا سوا.",
     },
     {
       num: "03",
       time: "8:30 PM",
       timeAr: "٨:٣٠ م",
-      title: "The Big Zaffa & Celebration",
+      title: "The Zaffa",
       titleAr: "الزفة المصرية والفرحة الكبيرة",
-      desc: "Joyful Egyptian zaffa rhythms and dancing with all our beloved guests.",
-      descAr: "الزفة البلدي المبهجة مع الطبول والمزامير والكل مسقط وفرحان من قلبه!",
+      descAr: "زفة بلدي مبهجة وكل الحبايب مسقطين وفرحانين من قلبهم.",
     },
     {
       num: "04",
       time: "9:30 PM",
       timeAr: "٩:٣٠ م",
-      title: "Royal Dinner Banquet",
+      title: "Dinner Buffet",
       titleAr: "بوفيه العشا المفتوح",
-      desc: "An exquisite dinner buffet prepared especially for our celebration.",
-      descAr: "أحلى بوفيه عشا معمول مخصوص عشان تروقوا وتشحنوا طاقة للسهرة.",
+      descAr: "عشا معمول مخصوص عشان تروقوا وتشحنوا طاقة لباقي السهرة.",
     },
     {
       num: "05",
       time: "10:30 PM",
       timeAr: "١٠:٣٠ م",
-      title: "First Dance & Cake Cutting",
+      title: "First Dance & Cake",
       titleAr: "الفيرست دانس وسهرة للصبح",
-      desc: "First dance under the chandeliers followed by cake cutting and non-stop dancing.",
-      descAr: "أول رقصة للعروسين وتقطيع تورتة الفرح وسهرة مولعة للصبح!",
+      descAr: "أول رقصة لينا سوا وتقطيع التورتة، وسهرة حلوة مش هتنتهي!",
     },
   ],
 
   story: [
     {
-      chapter: "Chapter I",
-      chapterAr: "أول نظرة",
-      title: "It started with a moment...",
+      chapter: "Part 1",
+      chapterAr: "أول مرة",
+      title: "How It Started",
       titleAr: "صدفة أحلى من ألف ميعاد",
-      year: "البداية",
-      text: "A quiet room, a brief introduction, and an unexpected spark that neither of us could ignore. What began as a spontaneous conversation soon revealed an unspoken familiarity.",
-      textAr: "كانت قعدة عادية جداً بس النظرة والكلمتين غيروا مسار حياتنا كله.. حسينا إننا نعرف بعض من سنين وإن في حاجة كبيرة بتربطنا.",
+      textAr: "كان يوم عادي جداً، بس النظرة والكلمتين غيروا كل حاجة.. حسينا إننا نعرف بعض من سنين وإن قلوبنا ارتاحت لبعض من أول ثانية.",
     },
     {
-      chapter: "Chapter II",
+      chapter: "Part 2",
       chapterAr: "أيامنا وسهرنا",
-      title: "Growing Together",
-      titleAr: "ضحكة من القلب وخروجات متتنسيش",
-      year: "الرحلة",
-      text: "Through every season, shared cup of coffee, and late-night conversation, our friendship blossomed into profound love. True love is finding peace together.",
-      textAr: "مع كل فنجان قهوة وسوالف بليل ومواقف مضحكة، اتأكدنا إننا اتخلقنا لبعض وإن السعادة الحقيقية هي إننا سوا في الحلوة والمرة.",
+      title: "Growing Closer",
+      titleAr: "ضحكة من القلب وسوالف بليل",
+      textAr: "مع كل خروجة وكوباية قهوة وضحكة من القلب، اتأكدنا إننا خلاص منقدرش نستغنى عن بعض، وإن بيتنا وأماننا هو وجودنا سوا.",
     },
     {
-      chapter: "Chapter III",
-      chapterAr: "يوم ما تقابلنا ووعدنا",
+      chapter: "Part 3",
+      chapterAr: "صالحت بيك أيامي",
       title: "The Promise",
-      titleAr: "الكلمة اللي غيرت الدنيا",
-      year: "الوعد",
-      text: "Under a golden twilight sky by the tranquil water, Mostafa asked the question that sealed our destinies. Two families embraced and two futures became forever intertwined.",
-      textAr: "على أنغام عمرو دياب وفي لحظة رومانسية متتوصفش، مصطفى قالها وروان وافقت بدموع الفرحة، وبيوتنا وأهالينا فرحوا بجمعتنا.",
+      titleAr: "الوعد والأمان",
+      textAr: "صالحت بيك أيامي وسامحت بيك الزمن.. الكلمة اللي اتقالت ووعدنا بيها بعض إننا نكمل المشوار سوا وعائلاتنا فرحوا بجمعتنا.",
     },
     {
-      chapter: "Chapter IV",
-      chapterAr: "النهاردة فرحنا في التراث",
-      title: "Forever Starts Here",
-      titleAr: "بداية أحلى عمر ومستنيينكم!",
-      year: "يوم العمر",
-      text: "Today we stand before you to make our vows eternal at El Torath Ballroom. We invite you to celebrate, dance, and witness the joyous chapter.",
-      textAr: "وصلنا لليوم اللي بنحلم بيه طول عمرنا في قاعة التراث بالمنصورة.. مستنيين كل حبايبنا ينورونا ويولعوا الفرح معانا!",
-    },
-  ],
-
-  galleryImages: [
-    {
-      id: 1,
-      src: "/images/couple-hero.jpg",
-      title: "Two Souls in Harmony",
-      titleAr: "ضحكة من القلب تملى الدنيا",
-      caption: "أحلى لحظات جمعتنا في شمس الغروب",
-      aspect: "portrait",
-    },
-    {
-      id: 2,
-      src: "/images/gallery-rings.jpg",
-      title: "The Eternal Circle",
-      titleAr: "دبلة العمر ووعد الأمانة",
-      caption: "خاتم دهب يربط قلوبنا لآخر العمر",
-      aspect: "landscape",
-    },
-    {
-      id: 3,
-      src: "/images/bride-rawan.jpg",
-      title: "Ethereal Grace",
-      titleAr: "روان — قمر الليلة وأجمل عروسة",
-      caption: "طرحة بيضا وفستان طاير ونور من السما",
-      aspect: "portrait",
-    },
-    {
-      id: 4,
-      src: "/images/groom-mostafa.jpg",
-      title: "The Dashing Groom",
-      titleAr: "مصطفى — شياكة وفرحة العريس",
-      caption: "بدلة توكسيدو شيك وابتسامة مالية وشه",
-      aspect: "portrait",
-    },
-    {
-      id: 5,
-      src: "/images/gallery-venue.jpg",
-      title: "A Night Under The Stars",
-      titleAr: "سهرة التراث وأنوار الفرح",
-      caption: "قاعة التراث منورة بحبايبنا والأنوار",
-      aspect: "wide",
-    },
-    {
-      id: 6,
-      src: "/images/gallery-dance.jpg",
-      title: "Walking Into Forever",
-      titleAr: "إيد في إيد وبنبدأ سوا",
-      caption: "خطوة بخطوة في طريق العمر الجديد",
-      aspect: "portrait",
+      chapter: "Part 4",
+      chapterAr: "فرحنا في التراث",
+      title: "Our Big Day",
+      titleAr: "يوم عمرنا اللي مستنيينه",
+      textAr: "وصلنا لليوم اللي بنحلم بيه في قاعة التراث بالمنصورة، ومستنيينكم كلكم تنورونا وتفرحوا معانا من قلبكم!",
     },
   ],
 
   dressCode: {
-    title: "Black Tie / Formal Elegance",
-    titleAr: "شياكة السهرة الكاملة",
-    description: "We kindly invite our guests to dress in formal evening attire. Gentlemen in suits or tuxedos; ladies in elegant evening gowns.",
+    title: "Black Tie / Elegant",
+    titleAr: "شياكة السهرة",
     descriptionAr: "شرفونا بأشيك إطلالة تليق بليلتنا (بدل كاملة للسادة، وفساتين سواريه راقية للسيدات).",
   },
 };

@@ -84,26 +84,26 @@ export default function ClosingSection() {
           {weddingConfig.bride}
         </h2>
 
-        {/* Forever Starts Here */}
+        {/* Forever starts here */}
         <p
-          className="font-serif"
+          className="font-arabic"
           style={{
-            fontSize: 'clamp(1.2rem, 2.5vw, 1.6rem)',
-            fontStyle: 'italic',
-            color: 'var(--color-champagne)',
-            letterSpacing: '0.05em',
-            marginBottom: '1rem',
+            fontSize: 'clamp(1.4rem, 3.5vw, 2.2rem)',
+            fontWeight: 700,
+            color: 'var(--color-gold)',
+            marginBottom: '0.6rem',
+            lineHeight: 1.4,
           }}
         >
-          Forever starts here.
+          {weddingConfig.romanticQuoteAr}
         </p>
 
         {/* English Event Word */}
         <div
           className="font-serif"
           style={{
-            fontSize: 'clamp(1.6rem, 3.8vw, 2.6rem)',
-            color: 'var(--color-gold)',
+            fontSize: 'clamp(1.4rem, 3vw, 2rem)',
+            color: 'var(--color-champagne)',
             lineHeight: 1.2,
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
@@ -125,30 +125,30 @@ export default function ClosingSection() {
 
         {/* Gratitude Statement */}
         <p
-          className="font-sans"
-          style={{
-            fontSize: 'clamp(0.95rem, 1.8vw, 1.15rem)',
-            letterSpacing: '0.18em',
-            textTransform: 'uppercase',
-            color: '#FAF7F2',
-            fontWeight: 400,
-            marginBottom: '0.5rem',
-          }}
-        >
-          Thank you for being part of our story.
-        </p>
-
-        {/* Arabic Gratitude */}
-        <p
           className="font-arabic"
           style={{
-            fontSize: '1.05rem',
-            color: '#A89F95',
-            marginBottom: '3.5rem',
+            fontSize: 'clamp(1.15rem, 2.2vw, 1.45rem)',
+            color: '#FFFFFF',
+            fontWeight: 600,
+            marginBottom: '0.6rem',
             direction: 'rtl',
           }}
         >
-          شكراً لوجودكم ودعواتكم التي تملأ قلوبنا نوراً وسعادة.
+          شكراً لكل حد فيكم بيشاركنا فرحتنا.. وجودكم بيسعد قلوبنا!
+        </p>
+
+        {/* Subtitle Gratitude */}
+        <p
+          className="font-sans"
+          style={{
+            fontSize: '0.85rem',
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: '#A89F95',
+            marginBottom: '3.5rem',
+          }}
+        >
+          Thank you for being part of our story.
         </p>
 
         {/* Back To Top Action */}

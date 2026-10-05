@@ -4,8 +4,7 @@ import { weddingConfig } from '../config/weddingConfig';
 
 /**
  * Minimal Floating Navigation:
- * - Replaces traditional bulky headers with an exquisite floating luxury trigger
- * - Opens a curated editorial fullscreen menu overlay
+ * Streamlined navigation items without removed RSVP or stock gallery.
  */
 export default function FloatingNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,13 +20,12 @@ export default function FloatingNav() {
 
   const navItems = [
     { id: 'hero', number: '01', title: 'Home', titleAr: 'البداية' },
-    { id: 'couple', number: '02', title: 'The Couple', titleAr: 'العروسان' },
-    { id: 'story', number: '03', title: 'Our Story', titleAr: 'قصتنا' },
+    { id: 'couple', number: '02', title: 'The Couple', titleAr: 'العروسين' },
+    { id: 'countdown', number: '03', title: 'Countdown', titleAr: 'العد التنازلي' },
     { id: 'celebration', number: '04', title: 'The Wedding', titleAr: 'تفاصيل الحفل' },
-    { id: 'timeline', number: '05', title: 'Timeline', titleAr: 'برنامج الحفل' },
+    { id: 'timeline', number: '05', title: 'Timeline', titleAr: 'فقرات السهرة' },
     { id: 'location', number: '06', title: 'Location', titleAr: 'موقع الحفل' },
-    { id: 'gallery', number: '07', title: 'Gallery', titleAr: 'معرض الصور' },
-    { id: 'rsvp', number: '08', title: 'RSVP', titleAr: 'تأكيد الحضور' },
+    { id: 'story', number: '07', title: 'Our Story', titleAr: 'حكايتنا' },
   ];
 
   const scrollTo = (id) => {
@@ -86,7 +84,6 @@ export default function FloatingNav() {
           </span>
         </button>
 
-        {/* Couple Monogram Chip */}
         <div
           style={{
             fontSize: '0.8rem',
@@ -102,7 +99,7 @@ export default function FloatingNav() {
         </div>
       </div>
 
-      {/* Fullscreen Editorial Navigation Overlay */}
+      {/* Fullscreen Navigation Overlay */}
       {isOpen && (
         <div
           style={{
@@ -238,8 +235,9 @@ export default function FloatingNav() {
                   <span
                     className="font-arabic"
                     style={{
-                      fontSize: '1rem',
+                      fontSize: '1.05rem',
                       color: 'var(--color-text-muted)',
+                      fontWeight: 500,
                     }}
                   >
                     {item.titleAr}
@@ -260,13 +258,13 @@ export default function FloatingNav() {
               borderTop: '1px solid rgba(197, 160, 89, 0.25)',
               paddingTop: '1.5rem',
               gap: '1rem',
-              fontSize: '0.8rem',
+              fontSize: '0.85rem',
               color: 'var(--color-text-muted)',
             }}
-            className="font-sans"
+            className="font-arabic"
           >
-            <div>{weddingConfig.displayDate} • {weddingConfig.location.venueName}, {weddingConfig.location.city}</div>
-            <div className="font-arabic">{weddingConfig.location.venueNameAr}</div>
+            <div>{weddingConfig.displayDateAr} • {weddingConfig.location.venueNameAr}</div>
+            <div>{weddingConfig.romanticQuoteAr}</div>
           </div>
         </div>
       )}
