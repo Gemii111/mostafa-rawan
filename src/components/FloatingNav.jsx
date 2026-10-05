@@ -35,10 +35,10 @@ export default function FloatingNav() {
 
   return (
     <>
-      {/* Floating Menu Button */}
+      {/* Top Header Menu Button */}
       <div
         style={{
-          position: 'fixed',
+          position: 'absolute',
           top: '1.25rem',
           left: '1.25rem',
           zIndex: 900,
@@ -258,7 +258,6 @@ export default function FloatingNav() {
             className="font-arabic"
           >
             <div>{weddingConfig.displayDateAr} • {weddingConfig.location.venueNameAr}</div>
-            <div style={{ color: 'var(--color-crimson-lyric)', fontWeight: 600 }}>"{weddingConfig.romanticQuoteAr}"</div>
           </div>
         </div>
       )}

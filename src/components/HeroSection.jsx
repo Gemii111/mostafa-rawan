@@ -108,7 +108,7 @@ export default function HeroSection() {
         {/* 1. THE ARTWORK AS THE VERY FIRST CENTERPIECE AT THE TOP */}
         <div
           style={{
-            maxWidth: '430px',
+            maxWidth: 'min(90vw, 400px)',
             margin: '0 auto 1.5rem auto',
             position: 'relative',
           }}
@@ -150,23 +150,8 @@ export default function HeroSection() {
           {weddingConfig.invitationTextAr}
         </p>
 
-        {/* 3. Ultra-Delicate, Chic Details Card */}
-        <div
-          className="editorial-card"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-            gap: '1.25rem',
-            padding: '1.5rem 1.25rem',
-            backgroundColor: 'rgba(255, 255, 255, 0.92)',
-            backdropFilter: 'blur(16px)',
-            border: '1px solid rgba(197, 160, 89, 0.35)',
-            borderRadius: '12px',
-            boxShadow: '0 16px 40px -10px rgba(41, 35, 28, 0.08), 0 0 0 1px rgba(197, 160, 89, 0.2)',
-            marginBottom: '2rem',
-            direction: 'rtl',
-          }}
-        >
+        {/* 3. Ultra-Delicate, Chic Details Card (2x2 on mobile, 4x1 on desktop) */}
+        <div className="hero-details-grid">
           {/* التاريخ */}
           <div
             style={{
@@ -373,15 +358,7 @@ export default function HeroSection() {
         </div>
 
         {/* 4. Action Buttons */}
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '1rem',
-          }}
-        >
+        <div className="hero-actions-container">
           <button
             onClick={scrollToLocation}
             className="btn-luxury"

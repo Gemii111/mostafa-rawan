@@ -1,20 +1,19 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { VolumeX, Music, Volume2 } from 'lucide-react';
+import { VolumeX, Music } from 'lucide-react';
 import { weddingConfig } from '../config/weddingConfig';
 
 /**
- * Bulletproof Floating Music Player:
+ * Modern Audio Player:
  * - Plays the actual authentic track: Amr Diab – Yom Ma Etabelna (عمرو دياب – يوم ما تقابلنا)
  * - Tries immediate unmuted autoplay on page load.
  * - If blocked by browser autoplay policy (mobile Safari / Chrome), instantly starts
  *   on the very first tap or touch anywhere on the screen.
- * - Shows an elegant floating prompt if audio is waiting for user gesture.
+ * - Anchored at the top header (does not scroll down or follow screen).
  * - Handles AudioContext unlocking for iOS Safari and Android.
  */
 export default function MusicPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
-  const [needsGesture, setNeedsGesture] = useState(false);
   const audioRef = useRef(null);
 
   // Helper to unlock Web Audio on iOS and Android
@@ -46,7 +45,6 @@ export default function MusicPlayer() {
         promise
           .then(() => {
             setIsPlaying(true);
-            setNeedsGesture(false);
             setShowTooltip(true);
             setTimeout(() => setShowTooltip(false), 4000);
             cleanupGestureListeners();
@@ -54,7 +52,6 @@ export default function MusicPlayer() {
           .catch((err) => {
             // Browser strictly blocked unmuted autoplay until user taps
             console.log('Autoplay prevented by browser policy, waiting for first tap:', err);
-            setNeedsGesture(true);
           });
       }
     };
@@ -101,7 +98,6 @@ export default function MusicPlayer() {
         .play()
         .then(() => {
           setIsPlaying(true);
-          setNeedsGesture(false);
           setShowTooltip(true);
           setTimeout(() => setShowTooltip(false), 3500);
         })
@@ -125,45 +121,10 @@ export default function MusicPlayer() {
         <source src={weddingConfig.music.src} type="audio/mpeg" />
       </audio>
 
-      {/* Floating Prompt if waiting for user tap */}
-      {needsGesture && !isPlaying && (
-        <div
-          onClick={togglePlay}
-          style={{
-            position: 'fixed',
-            bottom: '1.5rem',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            zIndex: 9999,
-            backgroundColor: 'rgba(25, 22, 19, 0.92)',
-            color: '#FFFFFF',
-            backdropFilter: 'blur(16px)',
-            WebkitBackdropFilter: 'blur(16px)',
-            border: '1px solid rgba(197, 160, 89, 0.5)',
-            borderRadius: '999px',
-            padding: '0.65rem 1.4rem',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.65rem',
-            cursor: 'pointer',
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(197, 160, 89, 0.35)',
-            animation: 'floatGentle 3s ease-in-out infinite',
-            direction: 'rtl',
-            whiteSpace: 'nowrap',
-          }}
-          className="font-arabic"
-        >
-          <Volume2 size={16} color="var(--color-gold)" />
-          <span style={{ fontSize: '0.85rem', fontWeight: 600 }}>
-            اضغط هنا أو في أي مكان لتشغيل الأغنية 🎵
-          </span>
-        </div>
-      )}
-
-      {/* Top Floating Player Control */}
+      {/* Top Header Player Control (Anchored at page top - does not scroll down) */}
       <div
         style={{
-          position: 'fixed',
+          position: 'absolute',
           top: '1.25rem',
           right: '1.25rem',
           zIndex: 900,
@@ -172,7 +133,7 @@ export default function MusicPlayer() {
           gap: '0.65rem',
         }}
       >
-        {/* Song Info Pill */}
+        {/* Song Info Pill (Shows briefly on play or hover) */}
         <div
           style={{
             background: 'rgba(250, 246, 240, 0.95)',
@@ -184,7 +145,7 @@ export default function MusicPlayer() {
             fontSize: '0.78rem',
             color: 'var(--color-text-secondary)',
             boxShadow: 'var(--shadow-card)',
-            display: showTooltip || isPlaying ? 'flex' : 'none',
+            display: showTooltip ? 'flex' : 'none',
             alignItems: 'center',
             gap: '0.5rem',
             whiteSpace: 'nowrap',

@@ -69,20 +69,6 @@ export default function ClosingSection() {
           {weddingConfig.groom} &amp; {weddingConfig.bride}
         </div>
 
-        {/* Calligraphy Lyric */}
-        <p
-          className="font-arabic"
-          style={{
-            fontSize: 'clamp(1.2rem, 2.8vw, 1.8rem)',
-            fontWeight: 700,
-            color: 'var(--color-gold)',
-            marginBottom: '0.4rem',
-            lineHeight: 1.4,
-          }}
-        >
-          "{weddingConfig.romanticQuoteAr}"
-        </p>
-
         {/* English Event Type */}
         <div
           className="font-sans"

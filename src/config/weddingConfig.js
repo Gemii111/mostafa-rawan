@@ -1,6 +1,6 @@
 /**
  * Central Configuration for Mostafa & Rawan's Wedding Invitation
- * Strictly confirmed facts, authentic artwork, and delicate Egyptian phrasing.
+ * Strictly confirmed facts and delicate Egyptian phrasing.
  */
 
 export const WEDDING_DATE = "2026-10-17T19:00:00+02:00";
@@ -13,10 +13,6 @@ export const weddingConfig = {
 
   // Strictly English event title as requested
   eventType: "THE WEDDING",
-
-  // Iconic lyric from the couple's artwork
-  romanticQuoteAr: "صالحت بيك أيامي.. سامحت بيك الزمن",
-  romanticQuote: "With you, I made peace with my days, and forgave time itself.",
 
   // Highly delicate, warm and classy invitation line
   invitationTextAr: "يسعدنا تشاركونا فرحة العمر.. ووجودكم ينوّر ليلتنا ✨",

@@ -82,39 +82,22 @@ export default function CountdownSection() {
           Counting Down
         </div>
 
-        {/* Countdown Cards Grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))',
-            gap: '1rem',
-            maxWidth: '650px',
-            margin: '0 auto',
-          }}
-        >
+        {/* Countdown Cards Grid (4 columns responsive for iPhone & Android) */}
+        <div className="countdown-grid">
           {units.map((unit) => (
             <div
               key={unit.label}
-              className="editorial-card"
-              style={{
-                padding: '1.5rem 0.75rem',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: '8px',
-                backgroundColor: 'rgba(255, 255, 255, 0.9)',
-              }}
+              className="editorial-card countdown-card"
             >
               <div
                 className="font-serif countdown-number"
                 style={{
-                  fontSize: 'clamp(2.4rem, 5vw, 3.6rem)',
+                  fontSize: 'clamp(1.75rem, 5.5vw, 3.4rem)',
                   fontWeight: 300,
                   lineHeight: 1,
                   color: 'var(--color-text-primary)',
                   letterSpacing: '0.02em',
-                  marginBottom: '0.5rem',
+                  marginBottom: '0.4rem',
                 }}
               >
                 {unit.value}
