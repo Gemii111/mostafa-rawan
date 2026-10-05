@@ -1,25 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { weddingConfig, WEDDING_DATE } from '../config/weddingConfig';
-import { Calendar, Clock, MapPin, Navigation, CalendarCheck } from 'lucide-react';
+import { Calendar, Clock, MapPin, Sparkles, Navigation, CalendarCheck } from 'lucide-react';
 
 /**
  * Hero Section:
- * High-fashion luxury editorial hero.
- * Strictly verified info, warm Egyptian tone, flawless typography.
+ * The couple's authentic artwork is the FIRST centerpiece at the very top.
+ * Followed by their names, the calligraphy lyric, warm Egyptian invitation,
+ * and essential event details. Zero clutter, zero repetition.
  */
 export default function HeroSection() {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (id) => {
-    const el = document.getElementById(id);
+  const scrollToLocation = () => {
+    const el = document.getElementById('location');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -38,26 +29,25 @@ export default function HeroSection() {
       id="hero"
       style={{
         position: 'relative',
-        minHeight: '100vh',
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        padding: '5rem 1.25rem 4rem 1.25rem',
         overflow: 'hidden',
-        padding: '6.5rem 1.5rem 4.5rem 1.5rem',
       }}
     >
-      {/* Ambient Radial Champagne Glow */}
+      {/* Ambient Radial Champagne Glow behind image */}
       <div
         style={{
           position: 'absolute',
-          top: '35%',
+          top: '25%',
           left: '50%',
-          width: 'clamp(320px, 65vw, 800px)',
-          height: 'clamp(320px, 65vw, 800px)',
-          transform: `translate(-50%, calc(-50% + ${scrollY * 0.12}px))`,
-          background: 'radial-gradient(circle, rgba(197, 160, 89, 0.18) 0%, rgba(223, 207, 190, 0.08) 55%, transparent 75%)',
+          width: 'clamp(320px, 70vw, 750px)',
+          height: 'clamp(320px, 70vw, 750px)',
+          transform: 'translate(-50%, -50%)',
+          background: 'radial-gradient(circle, rgba(197, 160, 89, 0.22) 0%, rgba(223, 207, 190, 0.1) 50%, transparent 75%)',
           borderRadius: '50%',
           pointerEvents: 'none',
           zIndex: 0,
@@ -65,46 +55,26 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Decorative Outer Hairline Frame */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 'clamp(1rem, 3vw, 2.5rem)',
-          border: '1px solid rgba(197, 160, 89, 0.28)',
-          borderRadius: '6px',
-          pointerEvents: 'none',
-          zIndex: 2,
-        }}
-      >
-        <div style={{ position: 'absolute', top: -3, left: -3, width: 8, height: 8, borderTop: '2px solid var(--color-gold)', borderLeft: '2px solid var(--color-gold)' }} />
-        <div style={{ position: 'absolute', top: -3, right: -3, width: 8, height: 8, borderTop: '2px solid var(--color-gold)', borderRight: '2px solid var(--color-gold)' }} />
-        <div style={{ position: 'absolute', bottom: -3, left: -3, width: 8, height: 8, borderBottom: '2px solid var(--color-gold)', borderLeft: '2px solid var(--color-gold)' }} />
-        <div style={{ position: 'absolute', bottom: -3, right: -3, width: 8, height: 8, borderBottom: '2px solid var(--color-gold)', borderRight: '2px solid var(--color-gold)' }} />
-      </div>
-
-      {/* Main Content */}
       <div
         style={{
           position: 'relative',
           zIndex: 3,
           textAlign: 'center',
-          maxWidth: '920px',
+          maxWidth: '820px',
           width: '100%',
-          transform: `translateY(${scrollY * -0.08}px)`,
-          transition: 'transform 0.1s ease-out',
         }}
       >
-        {/* Top Luxury Pill */}
+        {/* Top Minimal Pill */}
         <div
           style={{
             display: 'inline-flex',
             alignItems: 'center',
-            gap: '0.75rem',
+            gap: '0.65rem',
             marginBottom: '1.75rem',
-            padding: '0.45rem 1.4rem',
+            padding: '0.4rem 1.25rem',
             border: '1px solid rgba(197, 160, 89, 0.4)',
             borderRadius: '999px',
-            backgroundColor: 'rgba(255, 255, 255, 0.7)',
+            backgroundColor: 'rgba(255, 255, 255, 0.85)',
             backdropFilter: 'blur(10px)',
             boxShadow: 'var(--shadow-subtle)',
           }}
@@ -112,11 +82,11 @@ export default function HeroSection() {
           <span
             className="font-sans"
             style={{
-              fontSize: 'clamp(0.72rem, 1.2vw, 0.85rem)',
-              letterSpacing: '0.28em',
+              fontSize: '0.78rem',
+              letterSpacing: '0.24em',
               textTransform: 'uppercase',
               color: 'var(--color-gold-dark)',
-              fontWeight: 600,
+              fontWeight: 700,
             }}
           >
             {weddingConfig.eventType}
@@ -125,8 +95,8 @@ export default function HeroSection() {
           <span
             className="font-sans"
             style={{
-              fontSize: 'clamp(0.72rem, 1.2vw, 0.85rem)',
-              letterSpacing: '0.15em',
+              fontSize: '0.78rem',
+              letterSpacing: '0.12em',
               color: 'var(--color-text-secondary)',
               fontWeight: 600,
             }}
@@ -135,122 +105,184 @@ export default function HeroSection() {
           </span>
         </div>
 
-        {/* Centerpiece Names (English) */}
-        <div style={{ margin: '0.6rem 0' }}>
-          <h1
-            className="font-serif"
-            style={{
-              fontSize: 'clamp(3rem, 9.5vw, 6.2rem)',
-              fontWeight: 300,
-              letterSpacing: '0.12em',
-              color: 'var(--color-text-primary)',
-              lineHeight: 1.08,
-              textTransform: 'uppercase',
-            }}
-          >
-            <div>{weddingConfig.groom}</div>
-            <div
-              style={{
-                fontSize: 'clamp(1.8rem, 5.5vw, 3.6rem)',
-                fontStyle: 'italic',
-                fontFamily: 'var(--font-serif)',
-                color: 'var(--color-gold)',
-                margin: '0.1rem 0',
-                fontWeight: 300,
-                letterSpacing: '0.05em',
-              }}
-            >
-              &amp;
-            </div>
-            <div>{weddingConfig.bride}</div>
-          </h1>
-        </div>
-
-        {/* Centerpiece Names (Arabic) */}
+        {/* 1. THE ARTWORK IS THE FIRST THING RIGHT AT THE TOP */}
         <div
-          className="font-arabic"
           style={{
-            fontSize: 'clamp(1.8rem, 4.2vw, 2.8rem)',
-            fontWeight: 700,
-            color: 'var(--color-gold-dark)',
-            marginTop: '0.3rem',
-            marginBottom: '1rem',
+            maxWidth: '420px',
+            margin: '0 auto 1.75rem auto',
+            position: 'relative',
           }}
         >
-          {weddingConfig.groomAr} <span style={{ color: 'var(--color-gold)', fontWeight: 300 }}>&amp;</span> {weddingConfig.brideAr}
+          <div
+            className="editorial-card"
+            style={{
+              padding: '0.85rem',
+              backgroundColor: 'rgba(255, 255, 255, 0.95)',
+              boxShadow: '0 20px 50px -10px rgba(41, 35, 28, 0.16), 0 0 0 1px rgba(197, 160, 89, 0.35)',
+              borderRadius: '10px',
+            }}
+          >
+            <div
+              style={{
+                position: 'relative',
+                overflow: 'hidden',
+                borderRadius: '8px',
+                aspectRatio: '2 / 3',
+                backgroundColor: '#FAF5ED',
+                border: '1px solid rgba(197, 160, 89, 0.25)',
+              }}
+            >
+              <img
+                src={weddingConfig.coupleDetails.artPhoto}
+                alt="Mostafa & Rawan"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  display: 'block',
+                }}
+              />
+            </div>
+          </div>
         </div>
 
-        <div className="gold-divider" style={{ margin: '1rem auto 1.5rem auto' }}>
-          <div className="gold-divider-diamond" />
-        </div>
-
-        {/* Calligraphy Lyric from Artwork */}
+        {/* 2. Calligraphic Lyric from Artwork */}
         <div
           className="font-arabic"
           style={{
-            fontSize: 'clamp(1.3rem, 3.2vw, 2.1rem)',
+            fontSize: 'clamp(1.4rem, 3.4vw, 2.2rem)',
             color: 'var(--color-crimson-lyric)',
             fontWeight: 700,
-            lineHeight: 1.5,
-            marginBottom: '1.25rem',
+            lineHeight: 1.45,
+            marginBottom: '0.85rem',
           }}
         >
           "{weddingConfig.romanticQuoteAr}"
         </div>
 
-        {/* Warm Natural Egyptian Invitation Phrasing */}
+        {/* 3. Couple Names (Arabic Primary + English Accent) */}
+        <h1
+          className="font-arabic"
+          style={{
+            fontSize: 'clamp(2.4rem, 6.5vw, 4rem)',
+            fontWeight: 800,
+            color: 'var(--color-text-primary)',
+            margin: '0.2rem 0',
+            lineHeight: 1.2,
+          }}
+        >
+          {weddingConfig.groomAr}{' '}
+          <span
+            style={{
+              fontFamily: 'var(--font-serif)',
+              fontStyle: 'italic',
+              color: 'var(--color-gold)',
+              fontWeight: 300,
+              fontSize: 'clamp(1.8rem, 4.5vw, 3rem)',
+            }}
+          >
+            &amp;
+          </span>{' '}
+          {weddingConfig.brideAr}
+        </h1>
+
+        <div
+          className="font-sans"
+          style={{
+            fontSize: 'clamp(0.85rem, 1.8vw, 1.05rem)',
+            letterSpacing: '0.24em',
+            textTransform: 'uppercase',
+            color: 'var(--color-gold-dark)',
+            fontWeight: 600,
+            marginBottom: '1.25rem',
+          }}
+        >
+          {weddingConfig.groom} &amp; {weddingConfig.bride}
+        </div>
+
+        <div className="gold-divider" style={{ margin: '0.75rem auto 1.5rem auto' }}>
+          <div className="gold-divider-diamond" />
+        </div>
+
+        {/* 4. Warm Egyptian Invitation Phrasing */}
         <p
           className="font-arabic"
           style={{
-            fontSize: 'clamp(1.15rem, 2.4vw, 1.45rem)',
+            fontSize: 'clamp(1.15rem, 2.4vw, 1.4rem)',
             color: 'var(--color-text-primary)',
             fontWeight: 600,
-            lineHeight: 1.75,
-            maxWidth: '680px',
-            margin: '0 auto 2.2rem auto',
+            lineHeight: 1.7,
+            maxWidth: '640px',
+            margin: '0 auto 2rem auto',
           }}
         >
           {weddingConfig.invitationHeadlineAr}،<br />
           {weddingConfig.invitationSubtextAr}
         </p>
 
-        {/* Date, Time & Location Card */}
+        {/* 5. Essential Event Info Strip (Stated clearly ONCE) */}
         <div
           style={{
-            display: 'inline-flex',
-            flexWrap: 'wrap',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '1.5rem',
-            padding: '1rem 2rem',
-            backgroundColor: 'rgba(255, 255, 255, 0.85)',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '1rem',
+            padding: '1.25rem 1.5rem',
+            backgroundColor: 'rgba(255, 255, 255, 0.9)',
             backdropFilter: 'blur(14px)',
             border: '1px solid var(--color-border)',
-            borderRadius: '8px',
+            borderRadius: '10px',
             boxShadow: 'var(--shadow-card)',
-            fontSize: '0.95rem',
-            color: 'var(--color-text-primary)',
-            marginBottom: '2.5rem',
+            marginBottom: '2rem',
+            textAlign: 'center',
           }}
           className="font-arabic"
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 600 }}>
-            <Calendar size={17} color="var(--color-gold-dark)" />
-            <span>{weddingConfig.displayDateAr}</span>
+          {/* Date */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.3rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--color-gold-dark)', fontWeight: 700, fontSize: '0.85rem' }}>
+              <Calendar size={15} />
+              <span>التاريخ</span>
+            </div>
+            <div style={{ fontWeight: 700, color: 'var(--color-text-primary)', fontSize: '1.05rem' }}>
+              {weddingConfig.displayDateAr}
+            </div>
           </div>
-          <span style={{ color: 'var(--color-champagne)' }}>|</span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 600 }}>
-            <Clock size={17} color="var(--color-gold-dark)" />
-            <span>{weddingConfig.displayTimeAr}</span>
+
+          {/* Time */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.3rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--color-gold-dark)', fontWeight: 700, fontSize: '0.85rem' }}>
+              <Clock size={15} />
+              <span>الميعاد</span>
+            </div>
+            <div style={{ fontWeight: 700, color: 'var(--color-text-primary)', fontSize: '1.05rem' }}>
+              {weddingConfig.displayTimeAr}
+            </div>
           </div>
-          <span style={{ color: 'var(--color-champagne)' }}>|</span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 600 }}>
-            <MapPin size={17} color="var(--color-gold-dark)" />
-            <span>{weddingConfig.location.venueNameAr} — {weddingConfig.location.cityAr}</span>
+
+          {/* Venue */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.3rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--color-gold-dark)', fontWeight: 700, fontSize: '0.85rem' }}>
+              <MapPin size={15} />
+              <span>المكان</span>
+            </div>
+            <div style={{ fontWeight: 700, color: 'var(--color-text-primary)', fontSize: '1.05rem' }}>
+              {weddingConfig.location.venueNameAr} — {weddingConfig.location.cityAr}
+            </div>
+          </div>
+
+          {/* Dress Code */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.3rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--color-gold-dark)', fontWeight: 700, fontSize: '0.85rem' }}>
+              <Sparkles size={15} />
+              <span>الدريس كود</span>
+            </div>
+            <div style={{ fontWeight: 700, color: 'var(--color-text-primary)', fontSize: '1.05rem' }}>
+              {weddingConfig.dressCode.titleAr}
+            </div>
           </div>
         </div>
 
-        {/* Action CTAs */}
+        {/* 6. Quick Action Buttons */}
         <div
           style={{
             display: 'flex',
@@ -261,11 +293,11 @@ export default function HeroSection() {
           }}
         >
           <button
-            onClick={() => scrollToSection('location')}
+            onClick={scrollToLocation}
             className="btn-luxury"
           >
             <Navigation size={16} />
-            <span className="font-arabic" style={{ fontSize: '0.95rem' }}>مكان القاعة واللوكيشن</span>
+            <span className="font-arabic" style={{ fontSize: '0.95rem' }}>مكان القاعة على الخريطة</span>
           </button>
 
           <button
@@ -275,43 +307,6 @@ export default function HeroSection() {
             <CalendarCheck size={16} color="var(--color-gold-dark)" />
             <span className="font-arabic" style={{ fontSize: '0.95rem' }}>سجّل في Google Calendar</span>
           </button>
-        </div>
-      </div>
-
-      {/* Bottom Scroll Indicator */}
-      <div
-        onClick={() => scrollToSection('couple')}
-        style={{
-          position: 'absolute',
-          bottom: '2.2rem',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '0.6rem',
-          cursor: 'pointer',
-          zIndex: 4,
-        }}
-      >
-        <div
-          style={{
-            width: '1px',
-            height: '32px',
-            backgroundColor: 'rgba(197, 160, 89, 0.35)',
-            position: 'relative',
-            overflow: 'hidden',
-          }}
-        >
-          <div
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '14px',
-              backgroundColor: 'var(--color-gold)',
-              animation: 'scrollIndicatorMove 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite',
-            }}
-          />
         </div>
       </div>
     </section>

@@ -4,7 +4,7 @@ import { weddingConfig } from '../config/weddingConfig';
 
 /**
  * Minimal Floating Navigation:
- * Streamlined navigation items without removed RSVP, story, or stock gallery.
+ * Clean, lightweight, un-cluttered navigation.
  */
 export default function FloatingNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,11 +20,9 @@ export default function FloatingNav() {
 
   const navItems = [
     { id: 'hero', number: '01', title: 'Home', titleAr: 'البداية' },
-    { id: 'couple', number: '02', title: 'The Couple', titleAr: 'مصطفى & روان' },
-    { id: 'celebration', number: '03', title: 'The Wedding', titleAr: 'الميعاد والمكان' },
-    { id: 'countdown', number: '04', title: 'Countdown', titleAr: 'العد التنازلي' },
-    { id: 'timeline', number: '05', title: 'Timeline', titleAr: 'فقرات السهرة' },
-    { id: 'location', number: '06', title: 'Location', titleAr: 'موقع الحفل' },
+    { id: 'countdown', number: '02', title: 'Countdown', titleAr: 'العد التنازلي' },
+    { id: 'timeline', number: '03', title: 'Timeline', titleAr: 'فقرات السهرة' },
+    { id: 'location', number: '04', title: 'Location', titleAr: 'موقع الحفل' },
   ];
 
   const scrollTo = (id) => {
@@ -37,12 +35,12 @@ export default function FloatingNav() {
 
   return (
     <>
-      {/* Floating Navigation Trigger Button */}
+      {/* Floating Menu Button */}
       <div
         style={{
           position: 'fixed',
-          top: '1.5rem',
-          left: '1.5rem',
+          top: '1.25rem',
+          left: '1.25rem',
           zIndex: 900,
           display: 'flex',
           alignItems: 'center',
@@ -58,14 +56,14 @@ export default function FloatingNav() {
             WebkitBackdropFilter: 'blur(12px)',
             border: '1px solid rgba(197, 160, 89, 0.35)',
             borderRadius: '999px',
-            padding: '0.65rem 1.25rem',
+            padding: '0.55rem 1.15rem',
             display: 'flex',
             alignItems: 'center',
-            gap: '0.75rem',
+            gap: '0.65rem',
             cursor: 'pointer',
             boxShadow: 'var(--shadow-card)',
             color: 'var(--color-text-primary)',
-            transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+            transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
             outline: 'none',
           }}
         >
@@ -73,9 +71,9 @@ export default function FloatingNav() {
           <span
             className="font-sans"
             style={{
-              fontSize: '0.75rem',
-              letterSpacing: '0.22em',
-              fontWeight: 600,
+              fontSize: '0.72rem',
+              letterSpacing: '0.2em',
+              fontWeight: 700,
               textTransform: 'uppercase',
             }}
           >
@@ -86,19 +84,18 @@ export default function FloatingNav() {
         <div
           style={{
             fontSize: '0.85rem',
-            letterSpacing: '0.15em',
+            letterSpacing: '0.12em',
             color: 'var(--color-text-muted)',
             fontFamily: 'var(--font-serif)',
             display: scrolled ? 'block' : 'none',
-            padding: '0.3rem 0.6rem',
-            transition: 'opacity 0.4s ease',
+            padding: '0.2rem 0.5rem',
           }}
         >
           M <span style={{ color: 'var(--color-gold)', fontStyle: 'italic' }}>&amp;</span> R
         </div>
       </div>
 
-      {/* Fullscreen Navigation Overlay */}
+      {/* Fullscreen Overlay */}
       {isOpen && (
         <div
           style={{
@@ -112,27 +109,26 @@ export default function FloatingNav() {
             flexDirection: 'column',
             justifyContent: 'space-between',
             padding: 'clamp(2rem, 5vw, 4rem)',
-            animation: 'fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
             overflowY: 'auto',
           }}
         >
-          {/* Top Bar with Close Button */}
+          {/* Top Bar with Close */}
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
               borderBottom: '1px solid rgba(197, 160, 89, 0.25)',
-              paddingBottom: '1.5rem',
+              paddingBottom: '1.25rem',
             }}
           >
             <div>
               <span
                 className="font-serif"
                 style={{
-                  fontSize: '1.4rem',
+                  fontSize: '1.3rem',
                   letterSpacing: '0.15em',
-                  fontWeight: 300,
+                  fontWeight: 400,
                   color: 'var(--color-text-primary)',
                 }}
               >
@@ -141,12 +137,12 @@ export default function FloatingNav() {
               <span
                 className="font-sans"
                 style={{
-                  marginLeft: '1rem',
+                  marginLeft: '0.85rem',
                   color: 'var(--color-gold-dark)',
-                  fontSize: '0.82rem',
+                  fontSize: '0.78rem',
                   letterSpacing: '0.15em',
                   textTransform: 'uppercase',
-                  fontWeight: 600,
+                  fontWeight: 700,
                 }}
               >
                 {weddingConfig.eventType}
@@ -160,28 +156,27 @@ export default function FloatingNav() {
                 background: 'transparent',
                 border: '1px solid rgba(197, 160, 89, 0.35)',
                 borderRadius: '50%',
-                width: '44px',
-                height: '44px',
+                width: '42px',
+                height: '42px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer',
                 color: 'var(--color-text-primary)',
-                transition: 'transform 0.3s ease',
               }}
             >
-              <X size={20} />
+              <X size={18} />
             </button>
           </div>
 
-          {/* Nav Items List */}
+          {/* Nav Items */}
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              gap: '1.5rem clamp(2rem, 6vw, 5rem)',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+              gap: '1.25rem clamp(2rem, 5vw, 4rem)',
               margin: 'auto 0',
-              padding: '2.5rem 0',
+              padding: '2rem 0',
             }}
           >
             {navItems.map((item) => (
@@ -194,26 +189,26 @@ export default function FloatingNav() {
                   alignItems: 'baseline',
                   justifyContent: 'space-between',
                   borderBottom: '1px solid rgba(61, 55, 48, 0.08)',
-                  paddingBottom: '1rem',
-                  transition: 'transform 0.3s ease, border-color 0.3s ease',
+                  paddingBottom: '0.85rem',
+                  transition: 'transform 0.25s ease, border-color 0.25s ease',
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = 'var(--color-gold)';
-                  e.currentTarget.style.transform = 'translateX(8px)';
+                  e.currentTarget.style.transform = 'translateX(6px)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = 'rgba(61, 55, 48, 0.08)';
                   e.currentTarget.style.transform = 'translateX(0)';
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.85rem' }}>
                   <span
                     className="font-sans"
                     style={{
-                      fontSize: '0.8rem',
+                      fontSize: '0.78rem',
                       letterSpacing: '0.15em',
                       color: 'var(--color-gold-dark)',
-                      fontWeight: 600,
+                      fontWeight: 700,
                     }}
                   >
                     {item.number}
@@ -221,9 +216,8 @@ export default function FloatingNav() {
                   <span
                     className="font-serif"
                     style={{
-                      fontSize: 'clamp(1.5rem, 3vw, 2.2rem)',
+                      fontSize: 'clamp(1.4rem, 2.8vw, 2rem)',
                       fontWeight: 300,
-                      letterSpacing: '0.05em',
                       color: 'var(--color-text-primary)',
                     }}
                   >
@@ -231,18 +225,18 @@ export default function FloatingNav() {
                   </span>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                   <span
                     className="font-arabic"
                     style={{
-                      fontSize: '1.1rem',
+                      fontSize: '1.05rem',
                       color: 'var(--color-text-secondary)',
                       fontWeight: 600,
                     }}
                   >
                     {item.titleAr}
                   </span>
-                  <ArrowUpRight size={16} color="var(--color-gold)" />
+                  <ArrowUpRight size={15} color="var(--color-gold)" />
                 </div>
               </div>
             ))}
@@ -256,9 +250,9 @@ export default function FloatingNav() {
               justifyContent: 'space-between',
               alignItems: 'center',
               borderTop: '1px solid rgba(197, 160, 89, 0.25)',
-              paddingTop: '1.5rem',
-              gap: '1rem',
-              fontSize: '0.88rem',
+              paddingTop: '1.25rem',
+              gap: '0.85rem',
+              fontSize: '0.85rem',
               color: 'var(--color-text-muted)',
             }}
             className="font-arabic"

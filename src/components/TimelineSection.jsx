@@ -4,8 +4,7 @@ import { Clock } from 'lucide-react';
 
 /**
  * Timeline Section:
- * Ultra-delicate, chic, and streamlined schedule.
- * Elegant minimal styling, zero fluff.
+ * Ultra-delicate, chic schedule without clutter or repeated paragraphs.
  */
 export default function TimelineSection() {
   return (
@@ -15,74 +14,52 @@ export default function TimelineSection() {
       style={{
         backgroundColor: 'var(--color-bg)',
         position: 'relative',
+        paddingTop: '4.5rem',
+        paddingBottom: '4.5rem',
       }}
     >
       <div className="container-narrow">
-        {/* Section Header */}
-        <div style={{ textAlign: 'center', maxWidth: '650px', margin: '0 auto 4rem auto' }}>
-          <span
-            className="font-sans"
-            style={{
-              fontSize: '0.75rem',
-              letterSpacing: '0.3em',
-              textTransform: 'uppercase',
-              color: 'var(--color-gold-dark)',
-              fontWeight: 600,
-              display: 'block',
-              marginBottom: '0.6rem',
-            }}
-          >
-            The Timeline
-          </span>
-
+        {/* Header */}
+        <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 3rem auto' }}>
           <h2
-            className="heading-serif"
+            className="font-arabic"
             style={{
-              fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)',
-              textTransform: 'uppercase',
-              letterSpacing: '0.08em',
-              marginBottom: '0.5rem',
+              fontSize: 'clamp(1.5rem, 3.5vw, 2.2rem)',
+              fontWeight: 700,
+              color: 'var(--color-gold-dark)',
+              marginBottom: '0.3rem',
             }}
           >
-            Order of Events
+            فقرات السهرة
           </h2>
 
           <div
-            className="font-arabic"
+            className="font-sans"
             style={{
-              fontSize: '1.35rem',
-              color: 'var(--color-gold-dark)',
-              fontWeight: 700,
-              marginBottom: '0.5rem',
+              fontSize: '0.75rem',
+              letterSpacing: '0.25em',
+              textTransform: 'uppercase',
+              color: 'var(--color-text-muted)',
+              fontWeight: 600,
+              marginBottom: '0.75rem',
             }}
           >
-            برنامج ليلتنا
+            The Timeline
           </div>
 
-          <div className="gold-divider">
+          <div className="gold-divider" style={{ margin: '0.5rem auto' }}>
             <div className="gold-divider-diamond" />
           </div>
-
-          <p
-            className="font-arabic"
-            style={{
-              fontSize: '1.1rem',
-              color: 'var(--color-text-secondary)',
-              fontWeight: 500,
-            }}
-          >
-            عشان نفرح ونعيش كل لحظة سوا من البداية!
-          </p>
         </div>
 
-        {/* Chic Delicate Timeline List */}
+        {/* 5-Step Delicate List */}
         <div
           style={{
-            maxWidth: '640px',
+            maxWidth: '560px',
             margin: '0 auto',
             display: 'flex',
             flexDirection: 'column',
-            gap: '1.25rem',
+            gap: '1rem',
           }}
         >
           {weddingConfig.timeline.map((item) => (
@@ -93,21 +70,20 @@ export default function TimelineSection() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                padding: '1.4rem 1.8rem',
-                backgroundColor: 'rgba(255, 255, 255, 0.85)',
+                padding: '1.15rem 1.5rem',
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
                 borderRadius: '8px',
                 direction: 'rtl',
               }}
             >
-              {/* Event Title & English subtitle */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                 <span
                   style={{
                     fontFamily: 'var(--font-serif)',
-                    fontSize: '1.4rem',
+                    fontSize: '1.25rem',
                     color: 'var(--color-gold-dark)',
-                    fontWeight: 400,
-                    minWidth: '32px',
+                    fontWeight: 500,
+                    minWidth: '28px',
                   }}
                 >
                   {item.num}
@@ -117,10 +93,10 @@ export default function TimelineSection() {
                   <h3
                     className="font-arabic"
                     style={{
-                      fontSize: '1.2rem',
+                      fontSize: '1.1rem',
                       fontWeight: 700,
                       color: 'var(--color-text-primary)',
-                      marginBottom: '0.15rem',
+                      margin: 0,
                     }}
                   >
                     {item.titleAr}
@@ -129,11 +105,12 @@ export default function TimelineSection() {
                   <div
                     className="font-sans"
                     style={{
-                      fontSize: '0.75rem',
-                      letterSpacing: '0.12em',
+                      fontSize: '0.72rem',
+                      letterSpacing: '0.1em',
                       textTransform: 'uppercase',
                       color: 'var(--color-text-muted)',
                       fontWeight: 500,
+                      marginTop: '0.15rem',
                     }}
                   >
                     {item.title}
@@ -146,19 +123,19 @@ export default function TimelineSection() {
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '0.45rem',
-                  padding: '0.4rem 0.9rem',
+                  gap: '0.4rem',
+                  padding: '0.35rem 0.8rem',
                   backgroundColor: 'rgba(197, 160, 89, 0.12)',
                   borderRadius: '999px',
                   border: '1px solid rgba(197, 160, 89, 0.35)',
                   color: 'var(--color-gold-dark)',
-                  fontSize: '0.9rem',
+                  fontSize: '0.85rem',
                   fontWeight: 700,
                   fontFamily: 'var(--font-arabic)',
                   whiteSpace: 'nowrap',
                 }}
               >
-                <Clock size={14} />
+                <Clock size={13} />
                 <span>{item.timeAr}</span>
               </div>
             </div>
