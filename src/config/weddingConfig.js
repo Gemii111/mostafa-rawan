@@ -1,6 +1,6 @@
 /**
  * Central Configuration for Mostafa & Rawan's Wedding Invitation
- * Strictly confirmed facts, authentic artwork, and natural Egyptian phrasing.
+ * Strictly confirmed facts, authentic artwork, and delicate Egyptian phrasing.
  */
 
 export const WEDDING_DATE = "2026-10-17T19:00:00+02:00";
@@ -18,8 +18,8 @@ export const weddingConfig = {
   romanticQuoteAr: "صالحت بيك أيامي.. سامحت بيك الزمن",
   romanticQuote: "With you, I made peace with my days, and forgave time itself.",
 
-  // Simple, chic & attractive Egyptian invitation line
-  invitationTextAr: "فرحتنا تكمل بوجودكم وسطينا.. مستنيينكم تنورونا في أحلى ليلة! ✨",
+  // Highly delicate, warm and classy invitation line
+  invitationTextAr: "يسعدنا تشاركونا فرحة العمر.. ووجودكم ينوّر ليلتنا ✨",
 
   weddingDate: WEDDING_DATE,
   displayDate: "Saturday, October 17, 2026",
@@ -40,7 +40,7 @@ export const weddingConfig = {
   },
 
   music: {
-    src: "/audio/yom-ma-etabelna.mp3?v=master-cd-320k",
+    src: "/audio/yom-ma-etabelna.mp3",
     title: "Amr Diab – Yom Ma Etabelna",
     titleAr: "عمرو دياب – يوم ما تقابلنا",
     artist: "Amr Diab",
@@ -50,7 +50,7 @@ export const weddingConfig = {
     artPhoto: "/images/mostafa-rawan-art.jpg?v=artwork-v3",
   },
 
-  // Timeline without katb ketab as requested
+  // 4 confirmed milestones
   timeline: [
     {
       num: "01",

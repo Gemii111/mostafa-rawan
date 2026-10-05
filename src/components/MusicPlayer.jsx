@@ -1,18 +1,36 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { VolumeX, Music } from 'lucide-react';
+import { VolumeX, Music, Volume2 } from 'lucide-react';
 import { weddingConfig } from '../config/weddingConfig';
 
 /**
- * Floating Music Player:
- * - Plays the actual authentic song: Amr Diab – Yom Ma Etabelna (عمرو دياب – يوم ما تقابلنا)
- * - Autoplays immediately or seamlessly on any user touch, scroll, or opening screen tap.
- * - Animated equalizer bars
- * - Toast with song title
+ * Bulletproof Floating Music Player:
+ * - Plays the actual authentic track: Amr Diab – Yom Ma Etabelna (عمرو دياب – يوم ما تقابلنا)
+ * - Tries immediate unmuted autoplay on page load.
+ * - If blocked by browser autoplay policy (mobile Safari / Chrome), instantly starts
+ *   on the very first tap or touch anywhere on the screen.
+ * - Shows an elegant floating prompt if audio is waiting for user gesture.
+ * - Handles AudioContext unlocking for iOS Safari and Android.
  */
 export default function MusicPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
+  const [needsGesture, setNeedsGesture] = useState(false);
   const audioRef = useRef(null);
+
+  // Helper to unlock Web Audio on iOS and Android
+  const unlockAudioContext = () => {
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtx) {
+        const ctx = new AudioCtx();
+        if (ctx.state === 'suspended') {
+          ctx.resume();
+        }
+      }
+    } catch (e) {
+      // ignore
+    }
+  };
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -21,49 +39,50 @@ export default function MusicPlayer() {
     audio.volume = 0.95;
     audio.loop = true;
 
-    const playAudioSafely = () => {
-      if (audio.paused) {
-        audio
-          .play()
+    const startPlayback = () => {
+      unlockAudioContext();
+      const promise = audio.play();
+      if (promise !== undefined) {
+        promise
           .then(() => {
             setIsPlaying(true);
+            setNeedsGesture(false);
             setShowTooltip(true);
-            setTimeout(() => setShowTooltip(false), 4500);
-            cleanupListeners();
+            setTimeout(() => setShowTooltip(false), 4000);
+            cleanupGestureListeners();
           })
           .catch((err) => {
-            // Waiting for user gesture
-            console.log('Autoplay waiting for gesture:', err);
+            // Browser strictly blocked unmuted autoplay until user taps
+            console.log('Autoplay prevented by browser policy, waiting for first tap:', err);
+            setNeedsGesture(true);
           });
       }
     };
 
     // 1. Attempt immediate autoplay
-    playAudioSafely();
+    startPlayback();
 
-    // 2. Attach listeners for ANY user gesture
-    const interactionEvents = ['click', 'touchstart', 'touchend', 'pointerdown', 'scroll', 'keydown'];
+    // 2. Attach global touch & click listeners for immediate trigger on first interaction
+    const gestureEvents = ['pointerdown', 'touchstart', 'touchend', 'click'];
 
-    const handleUserGesture = () => {
-      playAudioSafely();
+    const handleFirstGesture = () => {
+      startPlayback();
     };
 
-    const cleanupListeners = () => {
-      interactionEvents.forEach((event) => {
-        window.removeEventListener(event, handleUserGesture);
+    const cleanupGestureListeners = () => {
+      gestureEvents.forEach((evt) => {
+        window.removeEventListener(evt, handleFirstGesture);
+        document.removeEventListener(evt, handleFirstGesture);
       });
-      window.removeEventListener('start-wedding-audio', playAudioSafely);
     };
 
-    interactionEvents.forEach((event) => {
-      window.addEventListener(event, handleUserGesture, { once: false, passive: true });
+    gestureEvents.forEach((evt) => {
+      window.addEventListener(evt, handleFirstGesture, { passive: true });
+      document.addEventListener(evt, handleFirstGesture, { passive: true });
     });
 
-    // 3. Listen to custom trigger from OpeningAnimation
-    window.addEventListener('start-wedding-audio', playAudioSafely);
-
     return () => {
-      cleanupListeners();
+      cleanupGestureListeners();
     };
   }, []);
 
@@ -71,6 +90,8 @@ export default function MusicPlayer() {
     e.stopPropagation();
     const audio = audioRef.current;
     if (!audio) return;
+
+    unlockAudioContext();
 
     if (isPlaying) {
       audio.pause();
@@ -80,6 +101,7 @@ export default function MusicPlayer() {
         .play()
         .then(() => {
           setIsPlaying(true);
+          setNeedsGesture(false);
           setShowTooltip(true);
           setTimeout(() => setShowTooltip(false), 3500);
         })
@@ -92,17 +114,62 @@ export default function MusicPlayer() {
   return (
     <>
       {/* Real original Amr Diab 320kbps CD Master audio track */}
-      <audio ref={audioRef} preload="auto" loop src={weddingConfig.music.src} />
+      <audio
+        ref={audioRef}
+        preload="auto"
+        loop
+        playsInline
+        webkit-playsinline="true"
+        src={weddingConfig.music.src}
+      >
+        <source src={weddingConfig.music.src} type="audio/mpeg" />
+      </audio>
 
+      {/* Floating Prompt if waiting for user tap */}
+      {needsGesture && !isPlaying && (
+        <div
+          onClick={togglePlay}
+          style={{
+            position: 'fixed',
+            bottom: '1.5rem',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 9999,
+            backgroundColor: 'rgba(25, 22, 19, 0.92)',
+            color: '#FFFFFF',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            border: '1px solid rgba(197, 160, 89, 0.5)',
+            borderRadius: '999px',
+            padding: '0.65rem 1.4rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.65rem',
+            cursor: 'pointer',
+            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(197, 160, 89, 0.35)',
+            animation: 'floatGentle 3s ease-in-out infinite',
+            direction: 'rtl',
+            whiteSpace: 'nowrap',
+          }}
+          className="font-arabic"
+        >
+          <Volume2 size={16} color="var(--color-gold)" />
+          <span style={{ fontSize: '0.85rem', fontWeight: 600 }}>
+            اضغط هنا أو في أي مكان لتشغيل الأغنية 🎵
+          </span>
+        </div>
+      )}
+
+      {/* Top Floating Player Control */}
       <div
         style={{
           position: 'fixed',
-          top: '1.5rem',
-          right: '1.5rem',
+          top: '1.25rem',
+          right: '1.25rem',
           zIndex: 900,
           display: 'flex',
           alignItems: 'center',
-          gap: '0.75rem',
+          gap: '0.65rem',
         }}
       >
         {/* Song Info Pill */}
@@ -112,9 +179,9 @@ export default function MusicPlayer() {
             backdropFilter: 'blur(12px)',
             WebkitBackdropFilter: 'blur(12px)',
             border: '1px solid rgba(197, 160, 89, 0.35)',
-            padding: '0.45rem 0.95rem',
+            padding: '0.45rem 0.9rem',
             borderRadius: '999px',
-            fontSize: '0.8rem',
+            fontSize: '0.78rem',
             color: 'var(--color-text-secondary)',
             boxShadow: 'var(--shadow-card)',
             display: showTooltip || isPlaying ? 'flex' : 'none',
@@ -124,8 +191,8 @@ export default function MusicPlayer() {
           }}
           className="font-arabic"
         >
-          <Music size={13} color="var(--color-gold-dark)" />
-          <span style={{ fontWeight: 600, color: 'var(--color-text-primary)' }}>
+          <Music size={12} color="var(--color-gold-dark)" />
+          <span style={{ fontWeight: 700, color: 'var(--color-text-primary)' }}>
             {weddingConfig.music.titleAr}
           </span>
         </div>
@@ -135,12 +202,12 @@ export default function MusicPlayer() {
           onClick={togglePlay}
           aria-label={isPlaying ? 'Pause wedding music' : 'Play wedding music'}
           style={{
-            width: '46px',
-            height: '46px',
+            width: '44px',
+            height: '44px',
             borderRadius: '50%',
             background: isPlaying ? 'var(--color-text-primary)' : 'rgba(250, 246, 240, 0.95)',
             color: isPlaying ? '#FAF6F0' : 'var(--color-text-primary)',
-            border: '1px solid rgba(197, 160, 89, 0.4)',
+            border: '1px solid rgba(197, 160, 89, 0.45)',
             backdropFilter: 'blur(12px)',
             WebkitBackdropFilter: 'blur(12px)',
             display: 'flex',
@@ -148,7 +215,7 @@ export default function MusicPlayer() {
             justifyContent: 'center',
             cursor: 'pointer',
             boxShadow: 'var(--shadow-card)',
-            transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+            transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
             outline: 'none',
             position: 'relative',
           }}
@@ -162,7 +229,7 @@ export default function MusicPlayer() {
                 display: 'flex',
                 alignItems: 'flex-end',
                 gap: '2.5px',
-                height: '16px',
+                height: '15px',
               }}
             >
               {[1, 2, 3, 4].map((bar) => (
@@ -180,17 +247,17 @@ export default function MusicPlayer() {
               ))}
             </div>
           ) : (
-            <VolumeX size={18} color="var(--color-text-muted)" />
+            <VolumeX size={17} color="var(--color-text-muted)" />
           )}
 
-          {/* Pulse ring when playing */}
+          {/* Pulsing ring when playing */}
           {isPlaying && (
             <div
               style={{
                 position: 'absolute',
                 inset: '-4px',
                 borderRadius: '50%',
-                border: '1px solid rgba(197, 160, 89, 0.4)',
+                border: '1px solid rgba(197, 160, 89, 0.45)',
                 animation: 'pulseGlow 2.5s infinite',
                 pointerEvents: 'none',
               }}
@@ -202,7 +269,7 @@ export default function MusicPlayer() {
       <style>{`
         @keyframes equalizerBounce {
           0% { height: 3px; }
-          100% { height: 16px; }
+          100% { height: 15px; }
         }
       `}</style>
     </>
