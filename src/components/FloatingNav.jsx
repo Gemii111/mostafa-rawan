@@ -22,7 +22,7 @@ export default function FloatingNav() {
   const navItems = [
     { id: 'hero', number: '01', title: 'The Invitation' },
     { id: 'countdown', number: '02', title: 'Countdown Clock' },
-    { id: 'celebration', number: '03', title: 'Celebration & Wishes' },
+    { id: 'celebration', number: '03', title: 'The Celebration' },
     { id: 'location', number: '04', title: 'Venue & Directions' },
   ];
 
