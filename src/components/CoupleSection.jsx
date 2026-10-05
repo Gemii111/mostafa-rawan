@@ -1,89 +1,82 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { weddingConfig } from '../config/weddingConfig';
-import { Heart, Sparkles } from 'lucide-react';
+import { Calendar, MapPin } from 'lucide-react';
 
 /**
  * Couple Section:
- * Centers the couple's artwork illustration with the famous lyric:
- * "صالحت بيك أيامي.. سامحت بيك الزمن"
+ * Gallery showcase centering the couple's authentic artwork illustration
+ * with the iconic lyric: "صالحت بيك أيامي.. سامحت بيك الزمن"
+ * Zero fake stories, zero fake counters.
  */
 export default function CoupleSection() {
-  const [loveCount, setLoveCount] = useState(245);
-  const [hasLiked, setHasLiked] = useState(false);
-
-  const handleLoveClick = () => {
-    if (!hasLiked) {
-      setLoveCount((prev) => prev + 1);
-      setHasLiked(true);
-    }
-  };
-
   return (
     <section id="couple" className="section" style={{ position: 'relative', overflow: 'hidden' }}>
       <div className="container">
         {/* Section Header */}
-        <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 3.5rem auto' }}>
+        <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 3rem auto' }}>
           <span
-            className="font-arabic"
+            className="font-sans"
             style={{
-              fontSize: '0.85rem',
-              letterSpacing: '0.15em',
+              fontSize: '0.75rem',
+              letterSpacing: '0.3em',
+              textTransform: 'uppercase',
               color: 'var(--color-gold-dark)',
               fontWeight: 600,
               display: 'block',
-              marginBottom: '0.75rem',
+              marginBottom: '0.6rem',
             }}
           >
-            العريس والعروسة • The Couple
+            The Couple
           </span>
 
           <h2
             className="heading-serif"
             style={{
-              fontSize: 'clamp(2.4rem, 5vw, 4rem)',
-              marginBottom: '1rem',
+              fontSize: 'clamp(2.4rem, 5.5vw, 4rem)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.08em',
+              marginBottom: '0.4rem',
             }}
           >
-            Two Souls, One Story
+            {weddingConfig.groom} &amp; {weddingConfig.bride}
           </h2>
+
+          <div
+            className="font-arabic"
+            style={{
+              fontSize: 'clamp(1.6rem, 3.8vw, 2.4rem)',
+              fontWeight: 700,
+              color: 'var(--color-gold-dark)',
+              marginBottom: '0.75rem',
+            }}
+          >
+            {weddingConfig.groomAr} &amp; {weddingConfig.brideAr}
+          </div>
 
           <div className="gold-divider">
             <div className="gold-divider-diamond" />
           </div>
 
-          {/* Famous Artwork Lyric in Calligraphic Style */}
+          {/* Calligraphic Lyric */}
           <div
             className="font-arabic"
             style={{
-              fontSize: 'clamp(1.5rem, 3.5vw, 2.3rem)',
-              color: '#8A1C24', // Deep romantic crimson accent matching the artwork's calligraphy
+              fontSize: 'clamp(1.4rem, 3.2vw, 2.2rem)',
+              color: 'var(--color-crimson-lyric)',
               fontWeight: 700,
-              marginBottom: '0.8rem',
               lineHeight: 1.5,
-              textShadow: '0 2px 8px rgba(138, 28, 36, 0.12)',
+              marginTop: '0.5rem',
             }}
           >
             "{weddingConfig.romanticQuoteAr}"
           </div>
-
-          <p
-            className="font-arabic"
-            style={{
-              fontSize: '1.15rem',
-              color: 'var(--color-text-secondary)',
-              lineHeight: 1.8,
-              direction: 'rtl',
-            }}
-          >
-            أجمل صدفة في العمر جمعتنا.. والنهاردة بنبدأ سوا أحلى حكاية، وفرحتنا مش هتكمل غير بيكم في قاعة التراث!
-          </p>
         </div>
 
         {/* Centerpiece Artwork Frame */}
         <div
           style={{
-            maxWidth: '560px',
-            margin: '0 auto 3rem auto',
+            maxWidth: '520px',
+            margin: '0 auto',
             position: 'relative',
           }}
         >
@@ -91,12 +84,12 @@ export default function CoupleSection() {
             className="editorial-card"
             style={{
               padding: '1.25rem',
-              backgroundColor: 'rgba(255, 255, 255, 0.95)',
-              boxShadow: '0 20px 50px -10px rgba(44, 39, 36, 0.16), 0 0 0 1px rgba(197, 160, 89, 0.35)',
+              backgroundColor: 'rgba(255, 255, 255, 0.92)',
+              boxShadow: '0 24px 60px -10px rgba(41, 35, 28, 0.16), 0 0 0 1px rgba(197, 160, 89, 0.35)',
               borderRadius: '8px',
             }}
           >
-            {/* The User's Artwork */}
+            {/* The Authentic Artwork */}
             <div
               style={{
                 position: 'relative',
@@ -104,6 +97,7 @@ export default function CoupleSection() {
                 borderRadius: '6px',
                 aspectRatio: '2 / 3',
                 backgroundColor: '#FAF5ED',
+                border: '1px solid rgba(197, 160, 89, 0.25)',
               }}
             >
               <img
@@ -118,54 +112,23 @@ export default function CoupleSection() {
               />
             </div>
 
-            {/* Couple Names Banner Below Artwork */}
+            {/* Couple Footer Info */}
             <div
               style={{
                 textAlign: 'center',
-                padding: '1.5rem 1rem 0.5rem 1rem',
+                padding: '1.5rem 1rem 0.75rem 1rem',
               }}
             >
               <div
+                className="font-arabic"
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '0.8rem',
-                  marginBottom: '0.4rem',
+                  fontSize: '1.6rem',
+                  fontWeight: 700,
+                  color: 'var(--color-text-primary)',
+                  marginBottom: '0.3rem',
                 }}
               >
-                <span
-                  className="font-arabic"
-                  style={{
-                    fontSize: '1.8rem',
-                    fontWeight: 700,
-                    color: 'var(--color-text-primary)',
-                  }}
-                >
-                  {weddingConfig.groomAr}
-                </span>
-
-                <span
-                  style={{
-                    fontFamily: 'var(--font-serif)',
-                    fontStyle: 'italic',
-                    fontSize: '1.6rem',
-                    color: 'var(--color-gold-dark)',
-                  }}
-                >
-                  &amp;
-                </span>
-
-                <span
-                  className="font-arabic"
-                  style={{
-                    fontSize: '1.8rem',
-                    fontWeight: 700,
-                    color: 'var(--color-text-primary)',
-                  }}
-                >
-                  {weddingConfig.brideAr}
-                </span>
+                {weddingConfig.groomAr} <span style={{ color: 'var(--color-gold)' }}>&amp;</span> {weddingConfig.brideAr}
               </div>
 
               <div
@@ -176,51 +139,36 @@ export default function CoupleSection() {
                   color: 'var(--color-gold-dark)',
                   fontWeight: 600,
                   textTransform: 'uppercase',
+                  marginBottom: '1rem',
                 }}
               >
                 {weddingConfig.groom} &amp; {weddingConfig.bride}
               </div>
+
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '1.2rem',
+                  fontSize: '0.88rem',
+                  color: 'var(--color-text-secondary)',
+                  padding: '0.4rem 1rem',
+                  borderTop: '1px solid rgba(197, 160, 89, 0.25)',
+                }}
+                className="font-arabic"
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <Calendar size={14} color="var(--color-gold-dark)" />
+                  <span>{weddingConfig.displayDateAr}</span>
+                </div>
+                <span style={{ color: 'var(--color-champagne)' }}>•</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <MapPin size={14} color="var(--color-gold-dark)" />
+                  <span>{weddingConfig.location.venueNameAr}</span>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-
-        {/* Interactive Love / Blessing Button */}
-        <div style={{ textAlign: 'center' }}>
-          <button
-            onClick={handleLoveClick}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.6rem',
-              padding: '0.75rem 1.6rem',
-              backgroundColor: hasLiked ? 'rgba(197, 160, 89, 0.15)' : 'rgba(255, 255, 255, 0.9)',
-              border: '1.5px solid var(--color-gold)',
-              borderRadius: '999px',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              boxShadow: 'var(--shadow-card)',
-            }}
-          >
-            <Heart
-              size={20}
-              fill={hasLiked ? '#C5A059' : 'transparent'}
-              color="var(--color-gold-dark)"
-              style={{
-                transition: 'transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-                transform: hasLiked ? 'scale(1.25)' : 'scale(1)',
-              }}
-            />
-            <span
-              className="font-arabic"
-              style={{
-                fontSize: '0.95rem',
-                color: 'var(--color-text-primary)',
-                fontWeight: 600,
-              }}
-            >
-              {hasLiked ? 'فرحتكم فرحتنا!' : 'ابعت لاف ومباركة حلوة للعروسين'} ({loveCount})
-            </span>
-          </button>
         </div>
       </div>
     </section>

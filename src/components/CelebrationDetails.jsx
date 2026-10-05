@@ -4,38 +4,38 @@ import { Calendar, Clock, MapPin, Sparkles } from 'lucide-react';
 
 /**
  * Celebration Details Section:
- * Modular cards detailing Date, Time, Venue & Dress Code.
- * Consumes all data strictly from weddingConfig.
+ * Strictly confirmed details (Date, Time, Venue, Dress Code).
+ * Zero contradictory timings, zero unconfirmed fluff.
  */
 export default function CelebrationDetails() {
   const detailsCards = [
     {
       icon: <Calendar size={22} color="var(--color-gold-dark)" />,
-      badge: "Date • الميعاد",
-      title: weddingConfig.displayDateAr,
-      subtitle: weddingConfig.displayDate,
-      note: "سجلوا الميعاد ومتتأخروش عشان نلحق نفرح سوا من أول دقيقة!",
+      badge: "The Date • التاريخ",
+      titleAr: weddingConfig.displayDateAr,
+      titleEn: weddingConfig.displayDate,
+      noteAr: "ليلة العمر اللي مستنيين نفرح فيها سوا",
     },
     {
       icon: <Clock size={22} color="var(--color-gold-dark)" />,
-      badge: "Time • التوقيت",
-      title: weddingConfig.displayTimeAr,
-      subtitle: weddingConfig.displayTime,
-      note: "وصول الحبايب بيبدأ من ٦:٣٠ م وكتب الكتاب الساعة ٧:٣٠ م",
+      badge: "The Time • الميعاد",
+      titleAr: weddingConfig.displayTimeAr,
+      titleEn: weddingConfig.displayTime,
+      noteAr: "بداية استقبال وضيافة الحضور الكرام",
     },
     {
       icon: <MapPin size={22} color="var(--color-gold-dark)" />,
-      badge: "Venue • المكان",
-      title: `${weddingConfig.location.venueNameAr} — ${weddingConfig.location.cityAr}`,
-      subtitle: weddingConfig.location.venueName,
-      note: "طريق طلخا - المنصورة، محافظة الدقهلية (فيو النيل)",
+      badge: "The Venue • المكان",
+      titleAr: `${weddingConfig.location.venueNameAr} — ${weddingConfig.location.cityAr}`,
+      titleEn: weddingConfig.location.venueName,
+      noteAr: weddingConfig.location.addressAr,
     },
     {
       icon: <Sparkles size={22} color="var(--color-gold-dark)" />,
-      badge: "Dress Code • الدريس كود",
-      title: weddingConfig.dressCode.titleAr,
-      subtitle: weddingConfig.dressCode.title,
-      note: "بدل كاملة شيك للسادة، وفساتين سواريه راقية للسيدات.",
+      badge: "Dress Code • الملابس",
+      titleAr: weddingConfig.dressCode.titleAr,
+      titleEn: weddingConfig.dressCode.title,
+      noteAr: weddingConfig.dressCode.descriptionAr,
     },
   ];
 
@@ -43,7 +43,7 @@ export default function CelebrationDetails() {
     <section id="celebration" className="section" style={{ position: 'relative' }}>
       <div className="container">
         {/* Section Header */}
-        <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 4.5rem auto' }}>
+        <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 4rem auto' }}>
           <span
             className="font-sans"
             style={{
@@ -53,49 +53,34 @@ export default function CelebrationDetails() {
               color: 'var(--color-gold-dark)',
               fontWeight: 600,
               display: 'block',
-              marginBottom: '0.75rem',
+              marginBottom: '0.6rem',
             }}
           >
-            Essential Information
+            {weddingConfig.eventType}
           </span>
 
           <h2
             className="heading-serif"
             style={{
-              fontSize: 'clamp(2.4rem, 5vw, 4rem)',
+              fontSize: 'clamp(2.2rem, 5vw, 3.8rem)',
               textTransform: 'uppercase',
               letterSpacing: '0.08em',
-              marginBottom: '0.8rem',
-            }}
-          >
-            The Celebration
-          </h2>
-
-          <div
-            style={{
-              fontSize: 'clamp(1.4rem, 3vw, 2rem)',
-              fontFamily: 'var(--font-serif)',
-              letterSpacing: '0.12em',
-              color: 'var(--color-text-secondary)',
-              marginBottom: '0.4rem',
-            }}
-          >
-            {weddingConfig.groom} &amp; {weddingConfig.bride}
-          </div>
-
-          {/* English Event Type */}
-          <div
-            className="font-serif"
-            style={{
-              fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)',
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              color: 'var(--color-gold-dark)',
-              fontWeight: 300,
               marginBottom: '0.5rem',
             }}
           >
-            {weddingConfig.eventType}
+            Event Details
+          </h2>
+
+          <div
+            className="font-arabic"
+            style={{
+              fontSize: '1.4rem',
+              color: 'var(--color-gold-dark)',
+              fontWeight: 700,
+              marginBottom: '0.5rem',
+            }}
+          >
+            تفاصيل ومواعيد الليلة
           </div>
 
           <div className="gold-divider">
@@ -103,12 +88,12 @@ export default function CelebrationDetails() {
           </div>
         </div>
 
-        {/* Modular Grid of Details Cards */}
+        {/* 4 Cards Grid */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: '2rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '1.75rem',
           }}
         >
           {detailsCards.map((card, idx) => (
@@ -116,25 +101,25 @@ export default function CelebrationDetails() {
               key={idx}
               className="editorial-card"
               style={{
-                padding: '2.5rem 2rem',
+                padding: '2.5rem 1.8rem',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 textAlign: 'center',
-                borderRadius: '1px',
+                borderRadius: '8px',
               }}
             >
               <div
                 style={{
-                  width: '54px',
-                  height: '54px',
+                  width: '52px',
+                  height: '52px',
                   borderRadius: '50%',
                   border: '1px solid var(--color-border-strong)',
-                  backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.95)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  marginBottom: '1.5rem',
+                  marginBottom: '1.25rem',
                   boxShadow: 'var(--shadow-subtle)',
                 }}
               >
@@ -144,8 +129,8 @@ export default function CelebrationDetails() {
               <span
                 className="font-sans"
                 style={{
-                  fontSize: '0.7rem',
-                  letterSpacing: '0.22em',
+                  fontSize: '0.72rem',
+                  letterSpacing: '0.2em',
                   textTransform: 'uppercase',
                   color: 'var(--color-gold-dark)',
                   fontWeight: 600,
@@ -156,39 +141,42 @@ export default function CelebrationDetails() {
               </span>
 
               <h3
-                className="font-serif"
+                className="font-arabic"
                 style={{
-                  fontSize: '1.45rem',
-                  fontWeight: 400,
+                  fontSize: '1.35rem',
+                  fontWeight: 700,
                   color: 'var(--color-text-primary)',
-                  marginBottom: '0.4rem',
-                  lineHeight: 1.3,
+                  marginBottom: '0.3rem',
+                  lineHeight: 1.35,
                 }}
               >
-                {card.title}
+                {card.titleAr}
               </h3>
 
               <div
-                className="font-arabic"
-                style={{
-                  fontSize: '1rem',
-                  color: 'var(--color-text-secondary)',
-                  marginBottom: '1rem',
-                }}
-              >
-                {card.subtitle}
-              </div>
-
-              <p
                 className="font-sans"
                 style={{
                   fontSize: '0.82rem',
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-text-secondary)',
+                  fontWeight: 500,
+                  marginBottom: '1rem',
+                }}
+              >
+                {card.titleEn}
+              </div>
+
+              <p
+                className="font-arabic"
+                style={{
+                  fontSize: '0.92rem',
                   color: 'var(--color-text-muted)',
-                  lineHeight: 1.6,
+                  lineHeight: 1.65,
                   marginTop: 'auto',
                 }}
               >
-                {card.note}
+                {card.noteAr}
               </p>
             </div>
           ))}

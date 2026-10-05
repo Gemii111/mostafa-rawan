@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Volume2, VolumeX, Music } from 'lucide-react';
+import { VolumeX, Music } from 'lucide-react';
 import { weddingConfig } from '../config/weddingConfig';
 
 /**
@@ -32,7 +32,7 @@ export default function MusicPlayer() {
             cleanupListeners();
           })
           .catch((err) => {
-            // Browser waiting for user gesture
+            // Waiting for user gesture
             console.log('Autoplay waiting for gesture:', err);
           });
       }
@@ -41,7 +41,7 @@ export default function MusicPlayer() {
     // 1. Attempt immediate autoplay
     playAudioSafely();
 
-    // 2. Attach listeners for ANY user gesture (touch, click, scroll, key)
+    // 2. Attach listeners for ANY user gesture
     const interactionEvents = ['click', 'touchstart', 'touchend', 'pointerdown', 'scroll', 'keydown'];
 
     const handleUserGesture = () => {
@@ -105,17 +105,16 @@ export default function MusicPlayer() {
           gap: '0.75rem',
         }}
       >
-        {/* Song Info Pill / Tooltip */}
+        {/* Song Info Pill */}
         <div
           style={{
-            background: 'rgba(250, 247, 242, 0.94)',
+            background: 'rgba(250, 246, 240, 0.95)',
             backdropFilter: 'blur(12px)',
             WebkitBackdropFilter: 'blur(12px)',
             border: '1px solid rgba(197, 160, 89, 0.35)',
             padding: '0.45rem 0.95rem',
             borderRadius: '999px',
-            fontSize: '0.75rem',
-            letterSpacing: '0.08em',
+            fontSize: '0.8rem',
             color: 'var(--color-text-secondary)',
             boxShadow: 'var(--shadow-card)',
             display: showTooltip || isPlaying ? 'flex' : 'none',
@@ -123,12 +122,11 @@ export default function MusicPlayer() {
             gap: '0.5rem',
             whiteSpace: 'nowrap',
           }}
-          className="font-sans"
+          className="font-arabic"
         >
-          <Music size={12} color="var(--color-gold)" />
-          <span style={{ fontWeight: 600 }}>{weddingConfig.music.title}</span>
-          <span className="font-arabic" style={{ color: 'var(--color-gold-dark)', fontSize: '0.75rem' }}>
-            ({weddingConfig.music.titleAr})
+          <Music size={13} color="var(--color-gold-dark)" />
+          <span style={{ fontWeight: 600, color: 'var(--color-text-primary)' }}>
+            {weddingConfig.music.titleAr}
           </span>
         </div>
 
@@ -140,8 +138,8 @@ export default function MusicPlayer() {
             width: '46px',
             height: '46px',
             borderRadius: '50%',
-            background: isPlaying ? 'var(--color-text-primary)' : 'rgba(250, 247, 242, 0.95)',
-            color: isPlaying ? '#FAF7F2' : 'var(--color-text-primary)',
+            background: isPlaying ? 'var(--color-text-primary)' : 'rgba(250, 246, 240, 0.95)',
+            color: isPlaying ? '#FAF6F0' : 'var(--color-text-primary)',
             border: '1px solid rgba(197, 160, 89, 0.4)',
             backdropFilter: 'blur(12px)',
             WebkitBackdropFilter: 'blur(12px)',

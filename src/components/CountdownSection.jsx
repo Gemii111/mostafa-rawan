@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { WEDDING_DATE, weddingConfig } from '../config/weddingConfig';
-import { Calendar, Clock, Sparkles } from 'lucide-react';
+import { CalendarCheck } from 'lucide-react';
 
 /**
  * Countdown Section:
- * Configured strictly from `WEDDING_DATE`.
- * Large luxury numbers with natural Egyptian labels and Google Calendar sync.
+ * Accurate countdown to Saturday, October 17, 2026 at 7:00 PM.
+ * Luxury typography with natural Egyptian labels and Google Calendar sync.
  */
 export default function CountdownSection() {
   const [timeLeft, setTimeLeft] = useState({
@@ -41,7 +41,7 @@ export default function CountdownSection() {
   const handleAddToCalendar = () => {
     const startDate = new Date(WEDDING_DATE).toISOString().replace(/-|:|\.\d\d\d/g, '');
     const endDate = new Date(new Date(WEDDING_DATE).getTime() + 6 * 60 * 60 * 1000).toISOString().replace(/-|:|\.\d\d\d/g, '');
-    const title = encodeURIComponent(`فرح مصطفى & روان | ${weddingConfig.groom} & ${weddingConfig.bride} Wedding`);
+    const title = encodeURIComponent(`فرح مصطفى & روان | Mostafa & Rawan Wedding`);
     const details = encodeURIComponent(`فرح مصطفى & روان\nالمكان: ${weddingConfig.location.venueNameAr} (${weddingConfig.location.venueName})\nالعنوان: ${weddingConfig.location.addressAr}\nاللوكيشن: ${weddingConfig.location.locationUrl}`);
     const location = encodeURIComponent(`${weddingConfig.location.venueNameAr}, ${weddingConfig.location.cityAr}`);
     const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDate}/${endDate}&details=${details}&location=${location}`;
@@ -69,17 +69,18 @@ export default function CountdownSection() {
       <div className="container-narrow" style={{ textAlign: 'center' }}>
         {/* Header */}
         <span
-          className="font-arabic"
+          className="font-sans"
           style={{
-            fontSize: '0.85rem',
-            letterSpacing: '0.15em',
+            fontSize: '0.75rem',
+            letterSpacing: '0.3em',
+            textTransform: 'uppercase',
             color: 'var(--color-gold-dark)',
             fontWeight: 600,
             display: 'block',
-            marginBottom: '0.75rem',
+            marginBottom: '0.6rem',
           }}
         >
-          بنعد اللحظات بالثانية • Counting Down
+          Counting Down
         </span>
 
         <h2
@@ -87,11 +88,11 @@ export default function CountdownSection() {
           style={{
             fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)',
             textTransform: 'uppercase',
-            letterSpacing: '0.1em',
-            marginBottom: '0.8rem',
+            letterSpacing: '0.08em',
+            marginBottom: '0.5rem',
           }}
         >
-          The Countdown Begins
+          The Countdown
         </h2>
 
         <div className="gold-divider">
@@ -101,21 +102,23 @@ export default function CountdownSection() {
         <p
           className="font-arabic"
           style={{
-            fontSize: '1.25rem',
-            color: 'var(--color-gold-dark)',
-            fontWeight: 500,
-            marginBottom: '0.4rem',
+            fontSize: 'clamp(1.2rem, 2.5vw, 1.45rem)',
+            color: 'var(--color-text-primary)',
+            fontWeight: 600,
+            marginBottom: '0.5rem',
           }}
         >
-          فاضل على ليلتنا الحلوة في {weddingConfig.location.venueNameAr}:
+          بنعد الأيام والساعات عشان نتجمع ونفرح سوا في {weddingConfig.location.venueNameAr}!
         </p>
 
         <p
-          className="font-serif"
+          className="font-sans"
           style={{
-            fontSize: '1.15rem',
-            color: 'var(--color-text-secondary)',
-            fontStyle: 'italic',
+            fontSize: '0.9rem',
+            letterSpacing: '0.12em',
+            color: 'var(--color-gold-dark)',
+            fontWeight: 600,
+            textTransform: 'uppercase',
             marginBottom: '3rem',
           }}
         >
@@ -127,8 +130,8 @@ export default function CountdownSection() {
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
-            gap: 'clamp(1rem, 2vw, 2rem)',
-            marginBottom: '3.5rem',
+            gap: 'clamp(1rem, 2vw, 1.75rem)',
+            marginBottom: '3rem',
           }}
         >
           {units.map((unit) => (
@@ -136,23 +139,24 @@ export default function CountdownSection() {
               key={unit.label}
               className="editorial-card"
               style={{
-                padding: 'clamp(1.5rem, 3vw, 2.5rem) 1rem',
+                padding: 'clamp(1.75rem, 3.5vw, 2.5rem) 1rem',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
-                position: 'relative',
+                borderRadius: '8px',
+                backgroundColor: 'rgba(255, 255, 255, 0.88)',
               }}
             >
-              {/* Large Number */}
+              {/* Big Serif Number */}
               <div
                 className="font-serif"
                 style={{
-                  fontSize: 'clamp(2.8rem, 6vw, 4.5rem)',
+                  fontSize: 'clamp(3rem, 6.5vw, 4.8rem)',
                   fontWeight: 300,
                   lineHeight: 1,
                   color: 'var(--color-text-primary)',
-                  letterSpacing: '0.04em',
+                  letterSpacing: '0.03em',
                   marginBottom: '0.75rem',
                 }}
               >
@@ -163,8 +167,8 @@ export default function CountdownSection() {
               <div
                 className="font-arabic"
                 style={{
-                  fontSize: '1.05rem',
-                  fontWeight: 600,
+                  fontSize: '1.15rem',
+                  fontWeight: 700,
                   color: 'var(--color-gold-dark)',
                   marginBottom: '0.2rem',
                 }}
@@ -176,10 +180,11 @@ export default function CountdownSection() {
               <div
                 className="font-sans"
                 style={{
-                  fontSize: '0.7rem',
+                  fontSize: '0.72rem',
                   letterSpacing: '0.2em',
                   textTransform: 'uppercase',
                   color: 'var(--color-text-muted)',
+                  fontWeight: 500,
                 }}
               >
                 {unit.label}
@@ -192,14 +197,14 @@ export default function CountdownSection() {
         <div>
           <button
             onClick={handleAddToCalendar}
-            className="btn-luxury-outline"
+            className="btn-luxury"
             style={{
-              cursor: 'pointer',
+              padding: '1.1rem 2.2rem',
             }}
           >
-            <Calendar size={16} />
-            <span className="font-arabic" style={{ fontSize: '0.9rem' }}>
-              سجّل ميعاد الفرح في الكالندر (Google Calendar)
+            <CalendarCheck size={18} />
+            <span className="font-arabic" style={{ fontSize: '1rem', fontWeight: 600 }}>
+              سجّل ميعاد الفرح في Google Calendar
             </span>
           </button>
         </div>

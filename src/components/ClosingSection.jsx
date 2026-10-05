@@ -5,6 +5,7 @@ import { Heart, ChevronUp } from 'lucide-react';
 /**
  * Closing Section:
  * Cinematic finale with glowing heart and heartfelt gratitude.
+ * Warm Egyptian phrasing, verified facts.
  */
 export default function ClosingSection() {
   const scrollToTop = () => {
@@ -15,9 +16,9 @@ export default function ClosingSection() {
     <footer
       style={{
         position: 'relative',
-        backgroundColor: '#191715',
-        color: '#FAF7F2',
-        padding: '7rem 1.5rem 4rem 1.5rem',
+        backgroundColor: '#151311',
+        color: '#FAF6F0',
+        padding: '6.5rem 1.5rem 3.5rem 1.5rem',
         textAlign: 'center',
         overflow: 'hidden',
       }}
@@ -38,7 +39,7 @@ export default function ClosingSection() {
       />
 
       <div className="container-narrow" style={{ position: 'relative', zIndex: 2 }}>
-        {/* Subtle Animated Heart / Light Icon */}
+        {/* Animated Heart Icon */}
         <div
           style={{
             display: 'inline-flex',
@@ -50,7 +51,7 @@ export default function ClosingSection() {
             backgroundColor: 'rgba(197, 160, 89, 0.15)',
             border: '1px solid rgba(197, 160, 89, 0.35)',
             color: 'var(--color-gold)',
-            marginBottom: '2rem',
+            marginBottom: '1.75rem',
             animation: 'pulseGlow 3s ease-in-out infinite',
           }}
         >
@@ -61,13 +62,13 @@ export default function ClosingSection() {
         <h2
           className="font-serif"
           style={{
-            fontSize: 'clamp(2.4rem, 7vw, 5rem)',
+            fontSize: 'clamp(2.4rem, 7vw, 4.8rem)',
             fontWeight: 300,
             letterSpacing: '0.14em',
             lineHeight: 1.1,
             color: '#FFFFFF',
             textTransform: 'uppercase',
-            marginBottom: '0.75rem',
+            marginBottom: '0.5rem',
           }}
         >
           {weddingConfig.groom}
@@ -84,31 +85,42 @@ export default function ClosingSection() {
           {weddingConfig.bride}
         </h2>
 
-        {/* Forever starts here */}
+        <div
+          className="font-arabic"
+          style={{
+            fontSize: 'clamp(1.6rem, 4vw, 2.4rem)',
+            color: 'var(--color-gold-light)',
+            fontWeight: 700,
+            marginBottom: '1rem',
+          }}
+        >
+          {weddingConfig.groomAr} <span style={{ color: 'var(--color-gold)' }}>&amp;</span> {weddingConfig.brideAr}
+        </div>
+
+        {/* Calligraphy Lyric */}
         <p
           className="font-arabic"
           style={{
-            fontSize: 'clamp(1.4rem, 3.5vw, 2.2rem)',
+            fontSize: 'clamp(1.3rem, 3.2vw, 2rem)',
             fontWeight: 700,
             color: 'var(--color-gold)',
-            marginBottom: '0.6rem',
+            marginBottom: '0.5rem',
             lineHeight: 1.4,
           }}
         >
-          {weddingConfig.romanticQuoteAr}
+          "{weddingConfig.romanticQuoteAr}"
         </p>
 
-        {/* English Event Word */}
+        {/* English Event Type */}
         <div
-          className="font-serif"
+          className="font-sans"
           style={{
-            fontSize: 'clamp(1.4rem, 3vw, 2rem)',
+            fontSize: 'clamp(0.85rem, 1.8vw, 1.1rem)',
             color: 'var(--color-champagne)',
-            lineHeight: 1.2,
-            letterSpacing: '0.2em',
+            letterSpacing: '0.25em',
             textTransform: 'uppercase',
+            fontWeight: 600,
             marginBottom: '1.5rem',
-            fontWeight: 300,
           }}
         >
           {weddingConfig.eventType}
@@ -117,38 +129,36 @@ export default function ClosingSection() {
         <div
           className="gold-divider"
           style={{
-            margin: '1.5rem auto 2.5rem auto',
+            margin: '1.5rem auto 2.2rem auto',
           }}
         >
           <div className="gold-divider-diamond" />
         </div>
 
-        {/* Gratitude Statement */}
+        {/* Warm Egyptian Farewell Message */}
         <p
           className="font-arabic"
           style={{
-            fontSize: 'clamp(1.15rem, 2.2vw, 1.45rem)',
+            fontSize: 'clamp(1.2rem, 2.4vw, 1.55rem)',
             color: '#FFFFFF',
             fontWeight: 600,
-            marginBottom: '0.6rem',
+            marginBottom: '0.5rem',
             direction: 'rtl',
+            lineHeight: 1.7,
           }}
         >
-          شكراً لكل حد فيكم بيشاركنا فرحتنا.. وجودكم بيسعد قلوبنا!
+          مستنيينكم تنورونا وتفرحوا معانا.. وجودكم هو أحلى هدية لينا!
         </p>
 
-        {/* Subtitle Gratitude */}
         <p
-          className="font-sans"
+          className="font-arabic"
           style={{
-            fontSize: '0.85rem',
-            letterSpacing: '0.18em',
-            textTransform: 'uppercase',
-            color: '#A89F95',
-            marginBottom: '3.5rem',
+            fontSize: '1rem',
+            color: 'var(--color-gold-light)',
+            marginBottom: '3rem',
           }}
         >
-          Thank you for being part of our story.
+          {weddingConfig.displayDateAr} • {weddingConfig.location.venueNameAr}
         </p>
 
         {/* Back To Top Action */}
@@ -170,7 +180,7 @@ export default function ClosingSection() {
             alignItems: 'center',
             gap: '0.5rem',
             transition: 'all 0.3s ease',
-            marginBottom: '4rem',
+            marginBottom: '3.5rem',
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.borderColor = 'var(--color-gold)';
@@ -185,7 +195,7 @@ export default function ClosingSection() {
           <ChevronUp size={15} />
         </button>
 
-        {/* Watermark / Credits */}
+        {/* Watermark Credits */}
         <div
           style={{
             borderTop: '1px solid rgba(255, 255, 255, 0.08)',
@@ -202,10 +212,10 @@ export default function ClosingSection() {
           className="font-sans"
         >
           <div>
-            MOSTAFA &amp; RAWAN • THE WEDDING
+            MOSTAFA &amp; RAWAN • THE WEDDING • 17.10.2026
           </div>
           <div className="font-arabic" style={{ color: '#887E75' }}>
-            قاعة التراث • المنصورة، مصر
+            {weddingConfig.location.venueNameAr} • المنصورة، مصر
           </div>
         </div>
       </div>

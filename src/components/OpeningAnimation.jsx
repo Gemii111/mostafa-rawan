@@ -4,34 +4,31 @@ import { Music } from 'lucide-react';
 
 /**
  * Opening Animation:
- * Minimal elegant reveal screen.
- * Triggers audio playback on click or transition automatically.
+ * Fast, minimal luxury reveal screen.
+ * Displays Mostafa & Rawan and transitions seamlessly.
  */
 export default function OpeningAnimation({ onComplete }) {
-  const [stage, setStage] = useState('reveal'); // 'reveal', 'fadeout', 'done'
+  const [stage, setStage] = useState('reveal');
 
   const handleEnter = () => {
-    // Dispatch event to start music with user gesture authorization
     window.dispatchEvent(new Event('start-wedding-audio'));
     setStage('fadeout');
     setTimeout(() => {
       setStage('done');
       if (onComplete) onComplete();
-    }, 600);
+    }, 450);
   };
 
   useEffect(() => {
-    // Stage 1: Reveal typography & gold divider (0 - 2.5s)
     const fadeTimer = setTimeout(() => {
       window.dispatchEvent(new Event('start-wedding-audio'));
       setStage('fadeout');
-    }, 2800);
+    }, 2000);
 
-    // Stage 2: Fade out overlay completely into hero
     const completeTimer = setTimeout(() => {
       setStage('done');
       if (onComplete) onComplete();
-    }, 3400);
+    }, 2450);
 
     return () => {
       clearTimeout(fadeTimer);
@@ -48,26 +45,24 @@ export default function OpeningAnimation({ onComplete }) {
         position: 'fixed',
         inset: 0,
         zIndex: 9999,
-        backgroundColor: '#FAF7F2',
+        backgroundColor: '#FAF6F0',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        transition: 'opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)',
+        transition: 'opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)',
         opacity: stage === 'fadeout' ? 0 : 1,
         transform: stage === 'fadeout' ? 'scale(1.02)' : 'scale(1)',
         cursor: 'pointer',
       }}
     >
-      {/* Decorative frame outline */}
       <div
         style={{
           position: 'absolute',
-          inset: 'clamp(1rem, 4vw, 3rem)',
-          border: '1px solid rgba(197, 160, 89, 0.28)',
+          inset: 'clamp(1rem, 3.5vw, 2.5rem)',
+          border: '1px solid rgba(197, 160, 89, 0.35)',
+          borderRadius: '4px',
           pointerEvents: 'none',
-          opacity: stage === 'reveal' ? 1 : 0,
-          transition: 'opacity 1s ease',
         }}
       />
 
@@ -75,30 +70,32 @@ export default function OpeningAnimation({ onComplete }) {
         style={{
           textAlign: 'center',
           padding: '2rem',
-          maxWidth: '800px',
+          maxWidth: '750px',
         }}
       >
         <span
-          className="font-arabic"
+          className="font-sans"
           style={{
             display: 'block',
-            fontSize: 'clamp(0.85rem, 1.8vw, 1.05rem)',
-            color: '#82786F',
+            fontSize: '0.75rem',
+            letterSpacing: '0.3em',
+            textTransform: 'uppercase',
+            color: 'var(--color-gold-dark)',
             marginBottom: '1rem',
-            fontWeight: 500,
+            fontWeight: 600,
           }}
         >
-          دعوة لحضور فرحنا • An Invitation To Celebrate
+          {weddingConfig.eventType}
         </span>
 
         <h1
           className="font-serif"
           style={{
-            fontSize: 'clamp(2.4rem, 6.5vw, 4.8rem)',
+            fontSize: 'clamp(2.4rem, 6.5vw, 4.5rem)',
             fontWeight: 300,
             letterSpacing: '0.14em',
-            color: '#1C1A17',
-            margin: '0.5rem 0',
+            color: '#191613',
+            margin: '0.4rem 0',
             lineHeight: 1.15,
           }}
         >
@@ -107,7 +104,7 @@ export default function OpeningAnimation({ onComplete }) {
             style={{
               fontStyle: 'italic',
               fontFamily: 'var(--font-serif)',
-              color: '#C5A059',
+              color: 'var(--color-gold)',
               margin: '0 0.5rem',
               fontWeight: 300,
             }}
@@ -128,32 +125,29 @@ export default function OpeningAnimation({ onComplete }) {
         </div>
 
         <div
-          className="font-serif"
+          className="font-arabic"
           style={{
-            fontSize: 'clamp(1.4rem, 3.2vw, 2.2rem)',
-            fontWeight: 300,
-            letterSpacing: '0.25em',
-            color: '#9F7E3B',
-            textTransform: 'uppercase',
+            fontSize: '1.2rem',
+            color: 'var(--color-text-primary)',
+            fontWeight: 600,
             marginBottom: '0.5rem',
           }}
         >
-          {weddingConfig.eventType}
+          {weddingConfig.groomAr} &amp; {weddingConfig.brideAr}
         </div>
 
         <div
           className="font-arabic"
           style={{
-            fontSize: '1.15rem',
-            color: 'var(--color-gold-dark)',
-            fontWeight: 600,
+            fontSize: '1rem',
+            color: 'var(--color-text-secondary)',
+            fontWeight: 500,
           }}
         >
-          "{weddingConfig.romanticQuoteAr}"
+          {weddingConfig.displayDateAr} • {weddingConfig.location.venueNameAr}
         </div>
       </div>
 
-      {/* Enter button with music icon */}
       <div
         style={{
           position: 'absolute',
@@ -161,19 +155,15 @@ export default function OpeningAnimation({ onComplete }) {
           display: 'inline-flex',
           alignItems: 'center',
           gap: '0.5rem',
-          padding: '0.5rem 1.25rem',
-          borderRadius: '999px',
-          backgroundColor: 'rgba(255, 255, 255, 0.8)',
-          border: '1px solid var(--color-border)',
           fontSize: '0.8rem',
+          letterSpacing: '0.15em',
           color: 'var(--color-gold-dark)',
-          fontFamily: 'var(--font-arabic)',
-          fontWeight: 600,
-          boxShadow: 'var(--shadow-subtle)',
+          fontFamily: 'var(--font-sans)',
+          textTransform: 'uppercase',
         }}
       >
         <Music size={14} color="var(--color-gold)" />
-        <span>اضغط هنا للدخول وتشغيل الأغنية</span>
+        <span className="font-arabic" style={{ fontSize: '0.85rem' }}>اضغط للدخول والاستماع</span>
       </div>
     </div>
   );

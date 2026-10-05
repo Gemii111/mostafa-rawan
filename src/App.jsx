@@ -5,11 +5,10 @@ import MusicPlayer from './components/MusicPlayer';
 import FloatingNav from './components/FloatingNav';
 import HeroSection from './components/HeroSection';
 import CoupleSection from './components/CoupleSection';
-import CountdownSection from './components/CountdownSection';
 import CelebrationDetails from './components/CelebrationDetails';
+import CountdownSection from './components/CountdownSection';
 import TimelineSection from './components/TimelineSection';
 import LocationSection from './components/LocationSection';
-import StorySection from './components/StorySection';
 import ClosingSection from './components/ClosingSection';
 
 export default function App() {
@@ -17,28 +16,27 @@ export default function App() {
 
   return (
     <div className="wedding-app-root">
-      {/* Initial Minimal Opening Animation */}
+      {/* Minimal Opening Reveal */}
       <OpeningAnimation onComplete={() => setIntroFinished(true)} />
 
-      {/* Ambient Floating Particles */}
+      {/* Ambient Champagne Floating Particles */}
       <ParticlesCanvas />
 
       {/* Floating Controls */}
       <FloatingNav />
       <MusicPlayer />
 
-      {/* Main Invitation Content Flow */}
+      {/* Main Essential Sections */}
       <main>
         <HeroSection />
         <CoupleSection />
-        <CountdownSection />
         <CelebrationDetails />
+        <CountdownSection />
         <TimelineSection />
         <LocationSection />
-        <StorySection />
       </main>
 
-      {/* Cinematic Finale */}
+      {/* Refined Finale */}
       <ClosingSection />
     </div>
   );

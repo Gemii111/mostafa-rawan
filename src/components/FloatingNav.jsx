@@ -4,7 +4,7 @@ import { weddingConfig } from '../config/weddingConfig';
 
 /**
  * Minimal Floating Navigation:
- * Streamlined navigation items without removed RSVP or stock gallery.
+ * Streamlined navigation items without removed RSVP, story, or stock gallery.
  */
 export default function FloatingNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,12 +20,11 @@ export default function FloatingNav() {
 
   const navItems = [
     { id: 'hero', number: '01', title: 'Home', titleAr: 'البداية' },
-    { id: 'couple', number: '02', title: 'The Couple', titleAr: 'العروسين' },
-    { id: 'countdown', number: '03', title: 'Countdown', titleAr: 'العد التنازلي' },
-    { id: 'celebration', number: '04', title: 'The Wedding', titleAr: 'تفاصيل الحفل' },
+    { id: 'couple', number: '02', title: 'The Couple', titleAr: 'مصطفى & روان' },
+    { id: 'celebration', number: '03', title: 'The Wedding', titleAr: 'الميعاد والمكان' },
+    { id: 'countdown', number: '04', title: 'Countdown', titleAr: 'العد التنازلي' },
     { id: 'timeline', number: '05', title: 'Timeline', titleAr: 'فقرات السهرة' },
     { id: 'location', number: '06', title: 'Location', titleAr: 'موقع الحفل' },
-    { id: 'story', number: '07', title: 'Our Story', titleAr: 'حكايتنا' },
   ];
 
   const scrollTo = (id) => {
@@ -54,7 +53,7 @@ export default function FloatingNav() {
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle navigation menu"
           style={{
-            background: 'rgba(250, 247, 242, 0.92)',
+            background: 'rgba(250, 246, 240, 0.94)',
             backdropFilter: 'blur(12px)',
             WebkitBackdropFilter: 'blur(12px)',
             border: '1px solid rgba(197, 160, 89, 0.35)',
@@ -86,7 +85,7 @@ export default function FloatingNav() {
 
         <div
           style={{
-            fontSize: '0.8rem',
+            fontSize: '0.85rem',
             letterSpacing: '0.15em',
             color: 'var(--color-text-muted)',
             fontFamily: 'var(--font-serif)',
@@ -106,14 +105,14 @@ export default function FloatingNav() {
             position: 'fixed',
             inset: 0,
             zIndex: 9998,
-            backgroundColor: 'rgba(250, 247, 242, 0.97)',
+            backgroundColor: 'rgba(250, 246, 240, 0.98)',
             backdropFilter: 'blur(20px)',
             WebkitBackdropFilter: 'blur(20px)',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
             padding: 'clamp(2rem, 5vw, 4rem)',
-            animation: 'fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+            animation: 'fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
             overflowY: 'auto',
           }}
         >
@@ -144,9 +143,10 @@ export default function FloatingNav() {
                 style={{
                   marginLeft: '1rem',
                   color: 'var(--color-gold-dark)',
-                  fontSize: '0.85rem',
+                  fontSize: '0.82rem',
                   letterSpacing: '0.15em',
                   textTransform: 'uppercase',
+                  fontWeight: 600,
                 }}
               >
                 {weddingConfig.eventType}
@@ -193,7 +193,7 @@ export default function FloatingNav() {
                   display: 'flex',
                   alignItems: 'baseline',
                   justifyContent: 'space-between',
-                  borderBottom: '1px solid rgba(74, 68, 61, 0.08)',
+                  borderBottom: '1px solid rgba(61, 55, 48, 0.08)',
                   paddingBottom: '1rem',
                   transition: 'transform 0.3s ease, border-color 0.3s ease',
                 }}
@@ -202,7 +202,7 @@ export default function FloatingNav() {
                   e.currentTarget.style.transform = 'translateX(8px)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(74, 68, 61, 0.08)';
+                  e.currentTarget.style.borderColor = 'rgba(61, 55, 48, 0.08)';
                   e.currentTarget.style.transform = 'translateX(0)';
                 }}
               >
@@ -235,9 +235,9 @@ export default function FloatingNav() {
                   <span
                     className="font-arabic"
                     style={{
-                      fontSize: '1.05rem',
-                      color: 'var(--color-text-muted)',
-                      fontWeight: 500,
+                      fontSize: '1.1rem',
+                      color: 'var(--color-text-secondary)',
+                      fontWeight: 600,
                     }}
                   >
                     {item.titleAr}
@@ -258,13 +258,13 @@ export default function FloatingNav() {
               borderTop: '1px solid rgba(197, 160, 89, 0.25)',
               paddingTop: '1.5rem',
               gap: '1rem',
-              fontSize: '0.85rem',
+              fontSize: '0.88rem',
               color: 'var(--color-text-muted)',
             }}
             className="font-arabic"
           >
             <div>{weddingConfig.displayDateAr} • {weddingConfig.location.venueNameAr}</div>
-            <div>{weddingConfig.romanticQuoteAr}</div>
+            <div style={{ color: 'var(--color-crimson-lyric)', fontWeight: 600 }}>"{weddingConfig.romanticQuoteAr}"</div>
           </div>
         </div>
       )}

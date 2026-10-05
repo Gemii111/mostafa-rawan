@@ -4,8 +4,8 @@ import { MapPin, Navigation, ExternalLink, Check, Copy } from 'lucide-react';
 
 /**
  * Location Section:
- * Impressive interactive venue & location showcase for El Torath Ballroom (قاعة التراث).
- * Features coordinates, preview card, and premium Google Maps CTA.
+ * Interactive venue & location showcase for El Torath Ballroom (قاعة التراث).
+ * Clean, modern layout with high contrast and verified Google Maps link.
  */
 export default function LocationSection() {
   const [copied, setCopied] = useState(false);
@@ -18,10 +18,10 @@ export default function LocationSection() {
   };
 
   return (
-    <section id="location" className="section" style={{ position: 'relative' }}>
+    <section id="location" className="section" style={{ position: 'relative', backgroundColor: 'var(--color-bg-alt)' }}>
       <div className="container">
         {/* Section Header */}
-        <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 4.5rem auto' }}>
+        <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 4rem auto' }}>
           <span
             className="font-sans"
             style={{
@@ -31,61 +31,62 @@ export default function LocationSection() {
               color: 'var(--color-gold-dark)',
               fontWeight: 600,
               display: 'block',
-              marginBottom: '0.75rem',
+              marginBottom: '0.6rem',
             }}
           >
-            Destination • موقع الحفل
+            The Venue
           </span>
 
           <h2
             className="heading-serif"
             style={{
-              fontSize: 'clamp(2.4rem, 5vw, 4rem)',
+              fontSize: 'clamp(2.2rem, 5vw, 3.8rem)',
               textTransform: 'uppercase',
               letterSpacing: '0.08em',
-              marginBottom: '0.8rem',
+              marginBottom: '0.5rem',
             }}
           >
-            Meet Us There
+            Location &amp; Directions
           </h2>
+
+          <div
+            className="font-arabic"
+            style={{
+              fontSize: '1.4rem',
+              color: 'var(--color-gold-dark)',
+              fontWeight: 700,
+              marginBottom: '0.5rem',
+            }}
+          >
+            موقع ومكان الحفل
+          </div>
 
           <div className="gold-divider">
             <div className="gold-divider-diamond" />
           </div>
 
           <p
-            className="font-serif"
-            style={{
-              fontSize: 'clamp(1.15rem, 2.2vw, 1.4rem)',
-              fontStyle: 'italic',
-              color: 'var(--color-text-secondary)',
-              marginBottom: '0.4rem',
-            }}
-          >
-            Your presence means everything to us.
-          </p>
-
-          <p
             className="font-arabic"
             style={{
               fontSize: '1.15rem',
-              color: 'var(--color-gold-dark)',
+              color: 'var(--color-text-primary)',
+              fontWeight: 600,
               direction: 'rtl',
-              fontWeight: 500,
             }}
           >
-            نتشرف بحضوركم في {location.venueNameAr} لتشاركونا فرحة العمر.
+            مستنيينكم تنورونا في {location.venueNameAr}، اللوكيشن واضح ومباشر على الخريطة!
           </p>
         </div>
 
-        {/* Location Showcase Card */}
+        {/* Location Card */}
         <div
           className="editorial-card"
           style={{
             maxWidth: '1050px',
             margin: '0 auto',
             overflow: 'hidden',
-            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+            backgroundColor: 'rgba(255, 255, 255, 0.95)',
+            borderRadius: '10px',
           }}
         >
           <div
@@ -95,7 +96,7 @@ export default function LocationSection() {
               alignItems: 'stretch',
             }}
           >
-            {/* Left Details Panel */}
+            {/* Details Panel */}
             <div
               style={{
                 gridColumn: 'span 12',
@@ -113,73 +114,77 @@ export default function LocationSection() {
                     alignItems: 'center',
                     gap: '0.5rem',
                     padding: '0.35rem 0.85rem',
-                    backgroundColor: 'rgba(197, 160, 89, 0.1)',
-                    borderRadius: '2px',
-                    marginBottom: '1.5rem',
+                    backgroundColor: 'rgba(197, 160, 89, 0.12)',
+                    borderRadius: '4px',
+                    marginBottom: '1.25rem',
                   }}
                 >
-                  <MapPin size={14} color="var(--color-gold-dark)" />
+                  <MapPin size={15} color="var(--color-gold-dark)" />
                   <span
                     className="font-sans"
                     style={{
-                      fontSize: '0.72rem',
-                      letterSpacing: '0.2em',
+                      fontSize: '0.75rem',
+                      letterSpacing: '0.18em',
                       textTransform: 'uppercase',
                       color: 'var(--color-gold-dark)',
                       fontWeight: 600,
                     }}
                   >
-                    Ceremony &amp; Banquet Venue
+                    Venue
                   </span>
                 </div>
 
-                {/* Venue Name */}
+                {/* Arabic Venue Name */}
                 <h3
-                  className="font-serif"
+                  className="font-arabic"
                   style={{
-                    fontSize: 'clamp(2rem, 4vw, 2.8rem)',
-                    fontWeight: 400,
-                    marginBottom: '0.3rem',
+                    fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
+                    fontWeight: 700,
+                    marginBottom: '0.2rem',
                     color: 'var(--color-text-primary)',
                   }}
                 >
-                  {location.venueName}
+                  {location.venueNameAr}
                 </h3>
 
+                {/* English Venue Name */}
                 <div
-                  className="font-arabic"
-                  style={{
-                    fontSize: '1.6rem',
-                    color: 'var(--color-gold-dark)',
-                    marginBottom: '1.25rem',
-                    fontWeight: 600,
-                  }}
-                >
-                  {location.venueNameAr}
-                </div>
-
-                <p
                   className="font-sans"
                   style={{
                     fontSize: '1rem',
-                    color: 'var(--color-text-secondary)',
-                    lineHeight: 1.7,
-                    marginBottom: '0.3rem',
+                    letterSpacing: '0.12em',
+                    color: 'var(--color-gold-dark)',
+                    textTransform: 'uppercase',
+                    fontWeight: 600,
+                    marginBottom: '1rem',
                   }}
                 >
-                  {location.address}
-                </p>
+                  {location.venueName}
+                </div>
 
                 <p
                   className="font-arabic"
                   style={{
-                    fontSize: '1rem',
-                    color: 'var(--color-text-muted)',
-                    marginBottom: '1.8rem',
+                    fontSize: '1.1rem',
+                    color: 'var(--color-text-secondary)',
+                    fontWeight: 500,
+                    lineHeight: 1.7,
+                    marginBottom: '0.3rem',
                     direction: 'rtl',
                   }}
                 >
                   {location.addressAr}
+                </p>
+
+                <p
+                  className="font-sans"
+                  style={{
+                    fontSize: '0.85rem',
+                    color: 'var(--color-text-muted)',
+                    marginBottom: '1.8rem',
+                  }}
+                >
+                  {location.address}
                 </p>
 
                 {/* Coordinates Badge */}
@@ -192,8 +197,9 @@ export default function LocationSection() {
                     padding: '0.75rem 1rem',
                     backgroundColor: 'var(--color-bg)',
                     border: '1px solid var(--color-border)',
+                    borderRadius: '6px',
                     marginBottom: '2rem',
-                    fontSize: '0.78rem',
+                    fontSize: '0.8rem',
                     color: 'var(--color-text-secondary)',
                     fontFamily: 'monospace',
                   }}
@@ -212,14 +218,15 @@ export default function LocationSection() {
                       alignItems: 'center',
                       gap: '0.35rem',
                       color: copied ? 'var(--color-gold-dark)' : 'var(--color-text-muted)',
-                      fontSize: '0.72rem',
+                      fontSize: '0.75rem',
                       fontFamily: 'var(--font-sans)',
                       textTransform: 'uppercase',
                       letterSpacing: '0.1em',
+                      fontWeight: 600,
                     }}
                   >
-                    {copied ? <Check size={13} /> : <Copy size={13} />}
-                    {copied ? 'Copied' : 'Copy'}
+                    {copied ? <Check size={14} /> : <Copy size={14} />}
+                    {copied ? 'تم النسخ' : 'نسخ'}
                   </button>
                 </div>
               </div>
@@ -233,7 +240,7 @@ export default function LocationSection() {
                   className="btn-luxury"
                   style={{ textDecoration: 'none' }}
                 >
-                  <span>Open Location</span>
+                  <span className="font-arabic" style={{ fontSize: '0.92rem' }}>فتح في Google Maps</span>
                   <ExternalLink size={15} />
                 </a>
 
@@ -245,12 +252,12 @@ export default function LocationSection() {
                   style={{ textDecoration: 'none' }}
                 >
                   <Navigation size={15} />
-                  <span>Get Directions</span>
+                  <span className="font-arabic" style={{ fontSize: '0.92rem' }}>اتجاهات السير</span>
                 </a>
               </div>
             </div>
 
-            {/* Right Map Preview Panel */}
+            {/* Map Preview Panel */}
             <div
               style={{
                 gridColumn: 'span 12',
@@ -267,7 +274,6 @@ export default function LocationSection() {
                 height="100%"
                 style={{
                   border: 0,
-                  filter: 'sepia(18%) contrast(96%) brightness(98%)',
                   minHeight: '380px',
                   display: 'block',
                 }}
@@ -282,10 +288,11 @@ export default function LocationSection() {
                   bottom: '1.25rem',
                   left: '1.25rem',
                   right: '1.25rem',
-                  backgroundColor: 'rgba(250, 247, 242, 0.95)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.95)',
                   backdropFilter: 'blur(8px)',
                   padding: '0.85rem 1.25rem',
                   border: '1px solid var(--color-border)',
+                  borderRadius: '6px',
                   boxShadow: 'var(--shadow-subtle)',
                   display: 'flex',
                   alignItems: 'center',
@@ -295,10 +302,10 @@ export default function LocationSection() {
               >
                 <div>
                   <div
-                    className="font-serif"
-                    style={{ fontSize: '1.05rem', fontWeight: 500, color: 'var(--color-text-primary)' }}
+                    className="font-arabic"
+                    style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--color-text-primary)' }}
                   >
-                    {location.venueNameAr} ({location.venueName})
+                    {location.venueNameAr}
                   </div>
                   <div className="font-sans" style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>
                     Talkha - Mansoura, Dakahlia
@@ -315,9 +322,9 @@ export default function LocationSection() {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.25rem',
-                    fontSize: '0.75rem',
+                    fontSize: '0.8rem',
                     letterSpacing: '0.1em',
-                    fontWeight: 600,
+                    fontWeight: 700,
                     textTransform: 'uppercase',
                     fontFamily: 'var(--font-sans)',
                   }}
