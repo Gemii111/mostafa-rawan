@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { weddingConfig, WEDDING_DATE } from '../config/weddingConfig';
-import { Calendar, Clock, MapPin, Sparkles, Navigation, CalendarCheck } from 'lucide-react';
+import { Calendar, Clock, MapPin, Sparkles, Navigation, CalendarCheck, Share2, Check } from 'lucide-react';
 
 /**
  * Hero Section:
@@ -23,6 +23,35 @@ export default function HeroSection() {
     const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDate}/${endDate}&details=${details}&location=${location}`;
     window.open(url, '_blank');
   };
+
+  const [copiedShare, setCopiedShare] = useState(false);
+
+  const handleShare = async () => {
+    const shareData = {
+      title: 'Mostafa & Rawan — The Wedding',
+      text: 'You are cordially invited to celebrate the wedding of Mostafa & Rawan on Saturday, October 17, 2026 at 8:00 PM at El Torath Ballroom, Mansoura.',
+      url: window.location.href,
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (err) {
+        if (err.name !== 'AbortError') {
+          copyToClipboard();
+        }
+      }
+    } else {
+      copyToClipboard();
+    }
+  };
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setCopiedShare(true);
+    setTimeout(() => setCopiedShare(false), 2500);
+  };
+
 
   return (
     <section
@@ -395,8 +424,30 @@ export default function HeroSection() {
           >
             <CalendarCheck size={16} color="var(--color-gold-dark)" />
             <span className="font-sans" style={{ fontSize: '0.85rem', letterSpacing: '0.12em' }}>
-              Add to Google Calendar
+              Add to Calendar
             </span>
+          </button>
+
+          <button
+            onClick={handleShare}
+            className="btn-luxury-outline"
+            aria-label="Share Wedding Invitation"
+          >
+            {copiedShare ? (
+              <>
+                <Check size={16} color="var(--color-gold-dark)" />
+                <span className="font-sans" style={{ fontSize: '0.85rem', letterSpacing: '0.12em' }}>
+                  Link Copied!
+                </span>
+              </>
+            ) : (
+              <>
+                <Share2 size={16} color="var(--color-gold-dark)" />
+                <span className="font-sans" style={{ fontSize: '0.85rem', letterSpacing: '0.12em' }}>
+                  Share Invitation
+                </span>
+              </>
+            )}
           </button>
         </div>
       </div>
